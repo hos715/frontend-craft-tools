@@ -38,6 +38,20 @@
 - `README.HI.md` — हिंदी डॉ큐मेंटेशन
 - `LICENSE` — MIT लाइसेंस
 
+## दस्तावेज़
+
+अपनी पसंदीदा भाषा में प्रोजेक्ट दस्तावेज़ पढ़ें:
+
+- [हिंदी रोडमैप](docs/hi/ROADMAP.md)
+- [हिंदी JSON Minifier दस्तावेज़](docs/hi/tools/json-minifier.md)
+- [हिंदी Lottie Color Switcher दस्तावेज़](docs/hi/tools/lottie-color-switcher.md)
+
+## भाषाएँ
+
+- [English](README.md)
+- [فارسی](README.FA.md)
+- [中文](README.ZH.md)
+
 ## GitHub Pages
 
 1. रिपॉजिटरी को GitHub पर पुश करें।

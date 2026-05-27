@@ -38,6 +38,20 @@
 - `README.HI.md` — 印地语文档
 - `LICENSE` — MIT 许可证
 
+## 文档
+
+选择你喜欢的语言查阅项目文档：
+
+- [中文路线图](docs/zh/ROADMAP.md)
+- [中文 JSON Minifier 文档](docs/zh/tools/json-minifier.md)
+- [中文 Lottie Color Switcher 文档](docs/zh/tools/lottie-color-switcher.md)
+
+## 语言
+
+- [English](README.md)
+- [فارسی](README.FA.md)
+- [हिन्दी](README.HI.md)
+
 ## GitHub Pages
 
 将仓库推送到 GitHub 后：

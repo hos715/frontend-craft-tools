@@ -7,6 +7,7 @@
 A small collection of lightweight, client-side front-end developer tools — no server required.
 
 Tools included in this initial version:
+
 - JSON Minifier — client-side JSON minification with size comparison
 - Lottie Color Switcher — extract and replace colors inside Lottie JSON files
 
@@ -41,6 +42,20 @@ This project provides a static set of HTML and JavaScript tools that run entirel
 - `README.HI.md` — Hindi documentation
 - `LICENSE` — MIT license
 - `CONTRIBUTING.md` — contribution guidelines
+
+## Docs
+
+Read project docs in your preferred language:
+
+- [English roadmap](docs/en/ROADMAP.md)
+- [English JSON Minifier docs](docs/en/tools/json-minifier.md)
+- [English Lottie Color Switcher docs](docs/en/tools/lottie-color-switcher.md)
+
+## Languages
+
+- [فارسی](README.FA.md)
+- [中文](README.ZH.md)
+- [हिन्दी](README.HI.md)
 
 ## GitHub Pages
 
