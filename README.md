@@ -7,6 +7,7 @@
 A small collection of lightweight, client-side front-end developer tools — no server required.
 
 Tools included in this initial version:
+
 - JSON Minifier — client-side JSON minification with size comparison
 - Lottie Color Switcher — extract and replace colors inside Lottie JSON files
 
