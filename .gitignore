@@ -1,7 +1,12 @@
+.DS_Store
+Thumbs.db
 node_modules/
 dist/
-.DS_Store
 *.log
 /.env
 /.cache
-/.vscode/
+
+# Ignore IDE/editor specific files and folders
+.vscode/
+.idea/
+.history
