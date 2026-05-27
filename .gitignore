@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+node_modules/
+*.log
+
+
+# Ignore IDE/editor specific files and folders
+.vscode/
+.idea/
+.history
