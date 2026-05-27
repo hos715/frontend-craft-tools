@@ -1,10 +1,20 @@
-# JSON Minifier
+# frontend-craft-tools
 
-A lightweight browser-based tool for minifying JSON files.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/hos715/frontend-craft-tools)](https://github.com/hos715/frontend-craft-tools)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fhos715.github.io%2Ffrontend-craft-tools)](https://hos715.github.io/frontend-craft-tools)
+
+A small collection of lightweight, client-side front-end developer tools — no server required.
+
+Tools included in this initial version:
+- JSON Minifier — client-side JSON minification with size comparison
+- Lottie Color Switcher — extract and replace colors inside Lottie JSON files
+
+This repository is structured so new tools can be added under `public/tools/`.
 
 ## Overview
 
-This project provides a static HTML page that lets users drag-and-drop or select a JSON file, then download a minified version without any server interaction.
+This project provides a static set of HTML and JavaScript tools that run entirely in the browser.
 
 ## Features
 
@@ -30,12 +40,7 @@ This project provides a static HTML page that lets users drag-and-drop or select
 - `README.ZH.md` — Chinese documentation
 - `README.HI.md` — Hindi documentation
 - `LICENSE` — MIT license
-- `script.js` — application logic for JSON minifier
-- `README.md` — English documentation
-- `README.FA.md` — Persian documentation
-- `README.ZH.md` — Chinese documentation
-- `README.HI.md` — Hindi documentation
-- `LICENSE` — MIT license
+- `CONTRIBUTING.md` — contribution guidelines
 
 ## GitHub Pages
 
@@ -43,7 +48,7 @@ To host this project on GitHub Pages:
 
 1. Push the repository to GitHub.
 2. Enable GitHub Pages in the repository settings.
-3. The project will be available at `https://<username>.github.io/<repo>/`.
+3. The project will be available at `https://hos715.github.io/frontend-craft-tools/`.
 
 ## License
 

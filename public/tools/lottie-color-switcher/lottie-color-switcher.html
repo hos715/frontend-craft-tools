@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعویض رنگ‌های لاتی — Lottie Color Switcher</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <meta name="description" content="ابزار تعویض رنگ در فایل‌های JSON لاتی با رابط‌کاربری تعاملی.">
+    <style>
+        /* Keep the look from original tool for better UX */
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="lang-switcher">
+        <label for="langSelect" data-i18n="langLabel">زبان:</label>
+        <select id="langSelect">
+            <option value="fa">فارسی</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="hi">हिंदी</option>
+        </select>
+    </div>
+
+    <a class="back-link" href="../../index.html" data-i18n="lottieBackLink">← بازگشت به صفحه اصلی</a>
+
+    <h1 id="pageTitle" data-i18n="lottiePageTitle">🎨 تعویض خودکار رنگ‌های فایل لاتی (Lottie JSON)</h1>
+    <div class="sub" id="pageSubtitle" data-i18n="lottiePageSubtitle">🔍 رنگ‌های قدیم را استخراج کن، رنگ جدید انتخاب کن و آن‌ها را جایگزین کن.</div>
+
+    <div class="upload-area" id="uploadZone">
+        <span id="uploadText" data-i18n="lottieUploadText">📂 فایل JSON لاتی را اینجا بکش و رها کن یا کلیک کن تا انتخاب کنی</span>
+        <input type="file" id="fileInput" accept=".json" style="display: none;">
+    </div>
+
+    <div id="fileStatus" class="file-info" style="display: none;"></div>
+
+    <div id="colorPanel" style="display: none;">
+        <h3 id="colorListTitle" data-i18n="lottieColorListTitle">🎨 لیست رنگ‌های پیدا شده در فایل (unique)</h3>
+        <div class="color-table-wrapper">
+            <table id="colorTable">
+                <thead>
+                    <tr>
+                        <th data-i18n="lottiePreviewHeader">پیش‌نمایش</th>
+                        <th data-i18n="lottieOldValueHeader">مقدار قدیم (در فایل)</th>
+                        <th data-i18n="lottieTypeHeader">نوع</th>
+                        <th data-i18n="lottieNewColorHeader">رنگ جدید (Hex یا RGBA)</th>
+                        <th data-i18n="lottieActionHeader">عملیات</th>
+                    </tr>
+                </thead>
+                <tbody id="colorTableBody"></tbody>
+            </table>
+        </div>
+        <div class="actions">
+            <button id="applyBtn" data-i18n="lottieApplyBtn">✨ اعمال تغییرات و دانلود فایل جدید</button>
+            <button id="resetMappingBtn" class="danger-btn" data-i18n="lottieResetMappingBtn">⟳ بازنشانی همه رنگ‌های جدید به حالت اولیه</button>
+        </div>
+        <div id="actionStatus" class="status"></div>
+    </div>
+
+    <footer>
+        <span id="footerLine1" data-i18n="lottieFooterLine1">⚡ هر رنگ در هر جای فایل (stroke, fill, keyframes, expressions, ...) عوض می‌شود.</span><br>
+        <span id="footerLine2" data-i18n="lottieFooterLine2">✅ قالب قدیم می‌تواند آرایه [r,g,b,a] با دامنه 0 تا 1 یا رشته Hex مثل "#ffffff" باشد.</span>
+    </footer>
+</div>
+
+<script src="../../script.js"></script>
+<script src="lottie-color-switcher.js"></script>
+</body>
+</html>

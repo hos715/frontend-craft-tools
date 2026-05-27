@@ -1,8 +1,10 @@
 .DS_Store
 Thumbs.db
 node_modules/
+dist/
 *.log
-
+/.env
+/.cache
 
 # Ignore IDE/editor specific files and folders
 .vscode/
