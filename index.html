@@ -1,65 +1,79 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frontend Craft Tools — ابزارهای کوچک برای فرانت‌اند</title>
-    <link rel="stylesheet" href="styles.css" />
-    <meta
-      name="description"
-      content="A small collection of browser-based front-end developer tools."
-    />
-  </head>
-  <body>
-    <div class="card">
-      <div class="lang-switcher">
-        <label for="langSelect" data-i18n="langLabel">زبان:</label>
-        <select id="langSelect">
-          <option value="fa">فارسی</option>
-          <option value="en">English</option>
-          <option value="zh">中文</option>
-          <option value="hi">हिंदी</option>
-        </select>
-      </div>
 
-      <h1 id="pageTitle" data-i18n="indexTitle">🧰 ابزارهای JSON</h1>
-      <div class="sub" id="pageSubtitle" data-i18n="pageSubtitle">
-        مجموعه‌ای از ابزارهای ساده برای کار با فایل‌های JSON در مرورگر.
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend Craft Tools — ابزارهای کوچک برای فرانت‌اند</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="A small collection of browser-based front-end developer tools." />
+</head>
 
-      <p id="introText" data-i18n="pageIntro">
-        این پروژه یک صفحه‌ی پل معرفی است و به مرور زمان می‌تواند ابزارهای بیشتری
-        را در خود جای دهد.
-      </p>
-
-      <div class="tool-list">
-        <a
-          class="tool-link"
-          href="tools/json-minifier/json-minifier.html"
-          id="toolLinkJsonMinifier"
-          data-i18n="toolLinkJsonMinifier"
-          >🗜️ Minify کننده JSON</a
-        >
-        <a
-          class="tool-link"
-          href="tools/lottie-color-switcher/lottie-color-switcher.html"
-          id="toolLinkLottie"
-          data-i18n="toolLinkLottie"
-          >🎨 تعویض رنگ‌های لاتی</a
-        >
-      </div>
-
-      <div class="info" id="infoText" data-i18n="infoText">
-        صفحه‌ی اصلی اینجا است، و ابزارهای فعلی به صورت جداگانه در صفحات دیگر
-        قرار دارند.
-      </div>
+<body>
+  <div class="card">
+    <div class="lang-switcher">
+      <label for="langSelect" data-i18n="langLabel">زبان:</label>
+      <select id="langSelect">
+        <option value="fa">فارسی</option>
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+        <option value="hi">हिंदी</option>
+      </select>
     </div>
-    <footer>
-      <span id="footerText" data-i18n="footerText"
-        >پروژه آماده توسعه است؛ ابزارهای جدید می‌توانند به همین ساختار اضافه
-        شوند.</span
-      >
-    </footer>
-    <script src="script.js"></script>
-  </body>
+
+    <h1 id="pageTitle" data-i18n="indexTitle">🧰 ابزارهای فرانت‌اند</h1>
+    <div class="sub" id="pageSubtitle" data-i18n="pageSubtitle">
+      مجموعه‌ای از ابزارهای کاربردی فرانت‌اند که همگی در مرورگر اجرا می‌شوند.
+    </div>
+
+    <p id="introText" data-i18n="pageIntro">
+      این پروژه یک صفحه‌ی معرفی ابزارهای توسعه است و به مرور زمان می‌تواند
+      ابزارهای بیشتری را در خود جای دهد.
+    </p>
+
+    <div class="tool-list">
+      <a class="tool-link" href="tools/json-minifier/json-minifier.html" id="toolLinkJsonMinifier"
+        data-i18n="toolLinkJsonMinifier">🗜️ Minify کننده JSON</a>
+      <a class="tool-link" href="tools/lottie-color-switcher/lottie-color-switcher.html" id="toolLinkLottie"
+        data-i18n="toolLinkLottie">🎨 تعویض رنگ‌های لاتی</a>
+      <a class="tool-link" href="tools/base64-encoder-decoder/base64-encoder-decoder.html"
+        id="toolLinkBase64EncoderDecoder" data-i18n="toolLinkBase64EncoderDecoder">🔐 Base64 Encoder / Decoder</a>
+      <a class="tool-link" href="tools/box-shadow-generator/box-shadow-generator.html" id="toolLinkBoxShadowGenerator"
+        data-i18n="toolLinkBoxShadowGenerator">🟪 Box Shadow Generator</a>
+      <a class="tool-link" href="tools/color-palette-extractor/color-palette-extractor.html"
+        id="toolLinkColorPaletteExtractor" data-i18n="toolLinkColorPaletteExtractor">🎨 Color Palette Extractor</a>
+      <a class="tool-link" href="tools/css-gradient-generator/css-gradient-generator.html"
+        id="toolLinkCssGradientGenerator" data-i18n="toolLinkCssGradientGenerator">🌈 CSS Gradient Generator</a>
+      <a class="tool-link" href="tools/css-variable-extractor/css-variable-extractor.html"
+        id="toolLinkCssVariableExtractor" data-i18n="toolLinkCssVariableExtractor">🧩 CSS Variable Extractor</a>
+      <a class="tool-link" href="tools/favicon-generator/favicon-generator.html" id="toolLinkFaviconGenerator"
+        data-i18n="toolLinkFaviconGenerator">🖼️ Favicon Generator</a>
+      <a class="tool-link" href="tools/image-compressor/image-compressor.html" id="toolLinkImageCompressor"
+        data-i18n="toolLinkImageCompressor">🗜️ Image Compressor</a>
+      <a class="tool-link" href="tools/lottie-preview/lottie-preview.html" id="toolLinkLottiePreview"
+        data-i18n="toolLinkLottiePreview">▶️ Lottie Preview</a>
+      <a class="tool-link" href="tools/markdown-previewer/markdown-previewer.html" id="toolLinkMarkdownPreviewer"
+        data-i18n="toolLinkMarkdownPreviewer">📝 Markdown Previewer</a>
+      <a class="tool-link" href="tools/png-optimizer/png-optimizer.html" id="toolLinkPngOptimizer"
+        data-i18n="toolLinkPngOptimizer">🖼️ PNG Optimizer</a>
+      <a class="tool-link" href="tools/qr-generator/qr-generator.html" id="toolLinkQrGenerator"
+        data-i18n="toolLinkQrGenerator">🔳 QR Generator</a>
+      <a class="tool-link" href="tools/qr-scanner/qr-scanner.html" id="toolLinkQrScanner"
+        data-i18n="toolLinkQrScanner">📷 QR Scanner</a>
+      <a class="tool-link" href="tools/svg-optimizer/svg-optimizer.html" id="toolLinkSvgOptimizer"
+        data-i18n="toolLinkSvgOptimizer">✂️ SVG Optimizer</a>
+    </div>
+
+    <div class="info" id="infoText" data-i18n="infoText">
+      صفحه‌ی اصلی اینجا است، و ابزارهای فعلی به صورت جداگانه در صفحات دیگر
+      قرار دارند.
+    </div>
+  </div>
+  <footer>
+    <span id="footerText" data-i18n="footerText">پروژه آماده توسعه است؛ ابزارهای جدید می‌توانند به همین ساختار اضافه
+      شوند.</span>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
 </html>
