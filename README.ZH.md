@@ -1,63 +1,45 @@
-# JSON Minifier
+# Frontend Craft Tools
 
-一个简单的浏览器端工具，用于压缩 JSON 文件。
+一个轻量的前端工具集合，全部在浏览器本地运行。
 
-## 概述
+## 工具列表
 
-此项目提供了一个静态 HTML 页面，允许用户拖放或选择 JSON 文件，然后下载经过压缩的版本，无需服务器。
-
-## 功能
-
-- 支持拖放 JSON 文件
-- 点击选择文件作为备用方式
-- 显示压缩前后的大小对比
-- 下载压缩后的 JSON 输出
-- 完全客户端运行，无需后端
-- 支持多语言：波斯语、英语、中文和印地语
-- 可直接托管在 GitHub Pages 上
-
-## 使用方法
-
-1. 在浏览器中打开 `index.html`。
-2. 点击 JSON Minifier 工具链接。
-3. 将 `.json` 文件拖到应用中，或点击文件区域进行选择。
-4. 文件处理完成后，点击下载按钮。
+- JSON Minifier
+- Lottie Color Switcher
+- Base64 Encoder / Decoder
+- Box Shadow Generator
+- Color Palette Extractor
+- CSS Gradient Generator
+- CSS Variable Extractor
+- Favicon Generator
+- Image Compressor
+- Lottie Preview
+- Markdown Previewer
+- PNG Optimizer
+- QR Generator
+- QR Scanner
+- SVG Optimizer
 
 ## 项目结构
 
-- `index.html` — 工具的着陆页
-- `json-minifier.html` — JSON 压缩工具页面
-- `lottie-color-switcher.html` — Lottie 颜色替换器页面
-- `styles.css` — 样式表
-- `script.js` — 共享语言和翻译逻辑
-- `json-minifier.js` — JSON 压缩工具页面脚本
-- `lottie-color-switcher.js` — Lottie 颜色替换器页面脚本
-- `README.md` — 英文文档
-- `README.FA.md` — 波斯文文档
-- `README.ZH.md` — 中文文档
-- `README.HI.md` — 印地语文档
-- `LICENSE` — MIT 许可证
+- `index.html` - 工具首页
+- `script.js` - 多语言共享逻辑 (FA/EN/ZH/HI)
+- `styles.css` - 共享样式
+- `tools/<tool-name>/<tool-name>.html` - 各工具页面
+- `docs/<lang>/tools/<tool-name>.md` - 各语言工具文档
 
 ## 文档
 
-选择你喜欢的语言查阅项目文档：
-
 - [中文路线图](docs/zh/ROADMAP.md)
-- [中文 JSON Minifier 文档](docs/zh/tools/json-minifier.md)
-- [中文 Lottie Color Switcher 文档](docs/zh/tools/lottie-color-switcher.md)
+- [英文路线图](docs/en/ROADMAP.md)
+- [中文工具文档目录](docs/zh/tools)
+- [默认工具文档目录](docs/zh/tools)
 
 ## 语言
 
 - [English](README.md)
 - [فارسی](README.FA.md)
 - [हिन्दी](README.HI.md)
-
-## GitHub Pages
-
-将仓库推送到 GitHub 后：
-
-1. 在仓库设置中启用 GitHub Pages。
-2. 项目将可通过 `https://<username>.github.io/<repo>/` 访问。
 
 ## 许可证
 
