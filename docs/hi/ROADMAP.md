@@ -3,10 +3,22 @@
 ## V1 — प्रारंभिक
 - JSON Minifier
 - Lottie Color Switcher
+- Base64 Encoder / Decoder
+- Box Shadow Generator
+- Color Palette Extractor
+- CSS Gradient Generator
+- CSS Variable Extractor
+- Favicon Generator
+- Image Compressor
+- Lottie Preview
+- Markdown Previewer
+- PNG Optimizer
+- QR Generator
+- QR Scanner
+- SVG Optimizer
 
 ## V2 — निकट भविष्य
 - CSS minifier
-- SVG optimizer
 - Image converter (WebP/AVIF helper)
 
 ## V3 — मध्य अवधि

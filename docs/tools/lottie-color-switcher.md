@@ -1,9 +1,15 @@
 # Lottie Color Switcher
 
-Extracts unique colors from a Lottie JSON and allows replacing them (Hex or RGBA). Works client-side and downloads the updated JSON.
+Extract and replace colors in a Lottie JSON file. The tool runs entirely in the browser and downloads the updated JSON.
 
-Usage:
+## Usage
 
-1. Open the tool page.
+1. Open the Lottie Color Switcher tool page.
 2. Upload a Lottie JSON file.
-3. Update colors and click Apply to download the modified file.
+3. Replace colors and apply the changes.
+4. Download the modified file.
+
+## Related docs
+- [Project overview](../../README.md)
+- [JSON Minifier](json-minifier.md)
+- [Roadmap](../ROADMAP.md)

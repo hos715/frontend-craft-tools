@@ -1,42 +1,39 @@
-# JSON Minifier
+# Frontend Craft Tools
 
-یک ابزار ساده برای فشرده‌سازی فایل‌های JSON در مرورگر.
+مجموعه‌ای از ابزارهای سبک فرانت‌اند که همگی داخل مرورگر اجرا می‌شوند.
 
-## درباره
+## ابزارها
 
-این پروژه به شما اجازه می‌دهد بدون نیاز به سرور، فایل JSON را بارگذاری کنید و نسخه‌ی فشرده‌شده‌ی آن را دریافت کنید.
-
-## ویژگی‌ها
-
-- درگ و دراپ فایل JSON
-- امکان انتخاب فایل با کلیک
-- نشان دادن حجم قبل و بعد از فشرده‌سازی
-- دانلود خودکار فایل جدید
-- پشتیبانی از زبان‌های فارسی، انگلیسی، چینی و هندی از طریق انتخاب زبان
-- اجرا فقط روی مرورگر و بدون ارسال داده
+- JSON Minifier
+- Lottie Color Switcher
+- Base64 Encoder / Decoder
+- Box Shadow Generator
+- Color Palette Extractor
+- CSS Gradient Generator
+- CSS Variable Extractor
+- Favicon Generator
+- Image Compressor
+- Lottie Preview
+- Markdown Previewer
+- PNG Optimizer
+- QR Generator
+- QR Scanner
+- SVG Optimizer
 
 ## ساختار پروژه
 
-- `index.html` — صفحه معرفی ابزارها
-- `json-minifier.html` — صفحه ابزار فشرده‌سازی JSON
-- `lottie-color-switcher.html` — صفحه ابزار تعویض رنگ لاتی
-- `styles.css` — استایل‌ها
-- `script.js` — منطق مشترک زبان و ترجمه برای همه صفحات
-- `json-minifier.js` — جاوااسکریپت صفحه فشرده‌سازی JSON
-- `lottie-color-switcher.js` — جاوااسکریپت صفحه تعویض رنگ لاتی
-- `README.md` — مستندات انگلیسی
-- `README.FA.md` — مستندات فارسی
-- `README.ZH.md` — مستندات چینی
-- `README.HI.md` — مستندات هندی
-- `LICENSE` — مجوز پروژه
+- `index.html` - صفحه اصلی ابزارها
+- `script.js` - منطق مشترک چندزبانه (FA/EN/ZH/HI)
+- `styles.css` - استایل مشترک
+- `tools/<tool-name>/<tool-name>.html` - صفحه هر ابزار
+- `docs/<lang>/tools/<tool-name>.md` - مستندات هر ابزار بر اساس زبان
 
 ## مستندات
 
-مستندات پروژه را به زبان دلخواه خود بخوانید:
-
 - [نقشه راه فارسی](docs/fa/ROADMAP.md)
-- [مستندات JSON Minifier فارسی](docs/fa/tools/json-minifier.md)
-- [مستندات Lottie Color Switcher فارسی](docs/fa/tools/lottie-color-switcher.md)
+- [نقشه راه انگلیسی](docs/en/ROADMAP.md)
+- [مستندات ابزارها (فارسی)](docs/fa/tools)
+- [مستندات ابزارها (پیش‌فرض)](docs/en/tools)
 
 ## زبان‌ها
 
@@ -44,10 +41,6 @@
 - [中文](README.ZH.md)
 - [हिन्दी](README.HI.md)
 
-## GitHub Pages
-
-برای نمایش آنلاین، این repo را روی GitHub منتشر کنید و GitHub Pages را فعال کنید.
-
 ## مجوز
 
-این پروژه تحت مجوز MIT قرار دارد.
+این پروژه تحت مجوز MIT است.

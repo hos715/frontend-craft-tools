@@ -4,66 +4,47 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/hos715/frontend-craft-tools)](https://github.com/hos715/frontend-craft-tools)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fhos715.github.io%2Ffrontend-craft-tools)](https://hos715.github.io/frontend-craft-tools)
 
-A small collection of lightweight, client-side front-end developer tools — no server required.
+A lightweight collection of browser-based frontend tools. All tools run fully client-side.
 
-Tools included in this initial version:
+## Tools
 
-- JSON Minifier — client-side JSON minification with size comparison
-- Lottie Color Switcher — extract and replace colors inside Lottie JSON files
-
-This repository is structured so new tools can be added under `public/tools/`.
-
-## Overview
-
-This project provides a static set of HTML and JavaScript tools that run entirely in the browser.
-
-## Features
-
-- Drag-and-drop JSON file support
-- File selection fallback
-- Size comparison before and after minification
-- Download minified JSON output
-- Lottie color replacement tool support
-- Fully client-side with no backend required
-- Supports Persian, English, Chinese, and Hindi via language selector
+- JSON Minifier
+- Lottie Color Switcher
+- Base64 Encoder / Decoder
+- Box Shadow Generator
+- Color Palette Extractor
+- CSS Gradient Generator
+- CSS Variable Extractor
+- Favicon Generator
+- Image Compressor
+- Lottie Preview
+- Markdown Previewer
+- PNG Optimizer
+- QR Generator
+- QR Scanner
+- SVG Optimizer
 
 ## Project structure
 
-- `index.html` — landing page for project tools
-- `json-minifier.html` — JSON minifier tool page
-- `lottie-color-switcher.html` — Lottie color replacement tool page
-- `styles.css` — styling for the pages
-- `script.js` — shared language and translation logic for all pages
-- `json-minifier.js` — page-specific JavaScript for JSON minifier
-- `lottie-color-switcher.js` — page-specific JavaScript for Lottie color switcher
-- `README.md` — English documentation
-- `README.FA.md` — Persian documentation
-- `README.ZH.md` — Chinese documentation
-- `README.HI.md` — Hindi documentation
-- `LICENSE` — MIT license
-- `CONTRIBUTING.md` — contribution guidelines
+- `index.html` - landing page with all tool links
+- `script.js` - shared i18n logic (FA/EN/ZH/HI)
+- `styles.css` - shared styling
+- `tools/<tool-name>/<tool-name>.html` - tool pages
+- `docs/<lang>/tools/<tool-name>.md` - per-tool docs by language
 
 ## Docs
 
-Read project docs in your preferred language:
-
 - [English roadmap](docs/en/ROADMAP.md)
-- [English JSON Minifier docs](docs/en/tools/json-minifier.md)
-- [English Lottie Color Switcher docs](docs/en/tools/lottie-color-switcher.md)
+- [Persian roadmap](docs/fa/ROADMAP.md)
+- [Chinese roadmap](docs/zh/ROADMAP.md)
+- [Hindi roadmap](docs/hi/ROADMAP.md)
+- [English tool docs](docs/en/tools)
 
 ## Languages
 
 - [فارسی](README.FA.md)
 - [中文](README.ZH.md)
 - [हिन्दी](README.HI.md)
-
-## GitHub Pages
-
-To host this project on GitHub Pages:
-
-1. Push the repository to GitHub.
-2. Enable GitHub Pages in the repository settings.
-3. The project will be available at `https://hos715.github.io/frontend-craft-tools/`.
 
 ## License
 
