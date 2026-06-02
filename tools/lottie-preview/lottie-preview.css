@@ -1,0 +1,100 @@
+* {
+        box-sizing: border-box;
+      }
+      body {
+        background: linear-gradient(145deg, #0b0e1a 0%, #111324 100%);
+        font-family: system-ui, 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 2rem;
+        color: #eee;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: #0f1120dd;
+        backdrop-filter: blur(4px);
+        border-radius: 48px;
+        padding: 2rem;
+        border: 1px solid #2d3142;
+        box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
+      }
+      h1 {
+        font-size: 2rem;
+        background: linear-gradient(135deg, #c084fc, #9d6cab);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin: 0 0 0.5rem;
+      }
+      .sub {
+        color: #aaa;
+        border-right: 3px solid #9d6cab;
+        padding-right: 1rem;
+        margin-bottom: 2rem;
+      }
+      .upload-area {
+        background: #1e2137;
+        border: 2px dashed #3d2a6f;
+        border-radius: 32px;
+        padding: 1.5rem;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.2s;
+        margin-bottom: 1.5rem;
+      }
+      .upload-area:hover {
+        background: #292e4a;
+        border-color: #9d6cab;
+      }
+      .animation-container {
+        background: #0c0e1a;
+        border-radius: 32px;
+        padding: 2rem;
+        text-align: center;
+        margin: 1rem 0;
+      }
+      #lottieCanvas {
+        background: #1e2137;
+        border-radius: 24px;
+        margin: 0 auto;
+      }
+      .controls {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+      button {
+        background: #3f5dad;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 40px;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #9d6cab;
+      }
+      .speed-control {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      input[type='range'] {
+        width: 150px;
+      }
+      .status {
+        background: #1e2137;
+        padding: 8px;
+        border-radius: 40px;
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 0.8rem;
+      }
+      footer {
+        text-align: center;
+        font-size: 0.7rem;
+        margin-top: 2rem;
+        color: #5a5e7e;
+      }
