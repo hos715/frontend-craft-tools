@@ -12,14 +12,14 @@
             const obj = JSON.parse(jsonString);
             return JSON.stringify(obj);
         } catch (e) {
-            throw new Error(getTranslation('jsonInvalidJsonError') || getTranslation('invalidJsonError') + e.message);
+            throw new Error(getTranslation('jsonInvalidJsonError') + e.message);
         }
     }
 
     function processFile(file) {
         if (!file || !file.name.toLowerCase().endsWith('.json')) {
             if (statusDiv) {
-                statusDiv.innerHTML = `<span class="error">${getTranslation('jsonFileTypeError') || getTranslation('fileTypeError')}</span>`;
+                statusDiv.innerHTML = `<span class="error">${getTranslation('jsonFileTypeError')}</span>`;
             }
             if (downloadBtn) {
                 downloadBtn.style.display = 'none';
@@ -40,10 +40,10 @@
 
                 if (statusDiv) {
                     statusDiv.innerHTML = `
-                        <span class="success">${getTranslation('jsonStatusSuccess') || getTranslation('statusSuccess')}</span><br>
-                        ${getTranslation('jsonSizeBefore') || getTranslation('sizeBefore')} ${originalSize} KB<br>
-                        ${getTranslation('jsonSizeAfter') || getTranslation('sizeAfter')} ${newSize} KB<br>
-                        ${getTranslation('jsonSizeSaved') || getTranslation('sizeSaved')} ${percent}%
+                        <span class="success">${getTranslation('jsonStatusSuccess')}</span><br>
+                        ${getTranslation('jsonSizeBefore')} ${originalSize} KB<br>
+                        ${getTranslation('jsonSizeAfter')} ${newSize} KB<br>
+                        ${getTranslation('jsonSizeSaved')} ${percent}%
                     `;
                 }
 
@@ -63,7 +63,7 @@
 
         reader.onerror = () => {
             if (statusDiv) {
-                statusDiv.innerHTML = `<span class="error">${getTranslation('jsonFileReadError') || getTranslation('fileReadError')}</span>`;
+                statusDiv.innerHTML = `<span class="error">${getTranslation('jsonFileReadError')}</span>`;
             }
             if (downloadBtn) {
                 downloadBtn.style.display = 'none';
@@ -103,7 +103,7 @@
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
                 if (statusDiv) {
-                    statusDiv.innerHTML += `<br><span class="success">${getTranslation('jsonDownloadStarted') || getTranslation('downloadStarted')} ${a.download}</span>`;
+                    statusDiv.innerHTML += `<br><span class="success">${getTranslation('jsonDownloadStarted')} ${a.download}</span>`;
                 }
             });
         }

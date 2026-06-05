@@ -23,46 +23,46 @@
     <a class="back-link" href="../../index.html" data-i18n="backHome">Back to home</a>
 
     <h1 id="pageTitle" data-i18n="faviconPageTitle">🖼️ Favicon & Manifest Generator</h1>
-    <div class="sub" id="pageSubtitle" data-i18n="faviconPageSubtitle">تولید تمام سایزهای favicon + فایل manifest.json + کد HTML آماده — با حداقل ابعاد تصویر <strong>256x256 پیکسل</strong></div>
+    <div class="sub" id="pageSubtitle" data-i18n-html="faviconPageSubtitle">تولید تمام سایزهای favicon + فایل manifest.json + کد HTML آماده — با حداقل ابعاد تصویر <strong>256x256 پیکسل</strong></div>
 
     <div class="two-columns">
         <div class="col">
             <div class="upload-area" id="dropZone">
-                📂 تصویر را بکشید یا کلیک کنید (PNG, JPG, WebP, SVG)
-                <br><small style="color:#aaa;">حداقل ابعاد 256x256 پیکسل (توصیه می‌شود تصویر مربعی و با کیفیت بالا)</small>
+                <span data-i18n="faviconUpload">📂 تصویر را بکشید یا کلیک کنید (PNG, JPG, WebP, SVG)</span>
+                <br><small style="color:#aaa;" data-i18n="faviconUploadHint">حداقل ابعاد 256x256 پیکسل (توصیه می‌شود تصویر مربعی و با کیفیت بالا)</small>
                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
                 <div id="previewContainer" style="margin-top: 12px;"></div>
             </div>
 
-            <div class="sizes-badge">📐 سایزهای استاندارد: 16,32,57,72,96,120,144,152,180,192,384,512 + favicon.ico</div>
-            <div class="note">
+            <div class="sizes-badge" data-i18n="faviconSizesBadge">📐 سایزهای استاندارد: 16,32,57,72,96,120,144,152,180,192,384,512 + favicon.ico</div>
+            <div class="note" data-i18n-html="faviconQualityNote">
                 ⚠️ نکته: اگر تصویر اصلی کوچک‌تر از 512 پیکسل باشد، آیکون‌های 384 و 512 با بزرگنمایی تولید می‌شوند و کیفیت آن‌ها کاهش می‌یابد. برای بهترین نتیجه، از تصویری با ابعاد حداقل 512x512 استفاده کنید.
             </div>
         </div>
 
         <div class="col">
             <div class="form-group">
-                <label>📛 name (نام کامل برنامه)</label>
-                <input type="text" id="appName" placeholder="مثال: My Awesome App" value="My PWA App">
+                <label data-i18n="faviconLabelName">📛 name (نام کامل برنامه)</label>
+                <input type="text" id="appName" data-i18n-placeholder="faviconPlaceholderName" placeholder="مثال: My Awesome App" value="My PWA App">
             </div>
             <div class="form-group">
-                <label>🔤 short_name (نام کوتاه)</label>
-                <input type="text" id="shortName" placeholder="مثال: MyApp" value="MyApp">
+                <label data-i18n="faviconLabelShortName">🔤 short_name (نام کوتاه)</label>
+                <input type="text" id="shortName" data-i18n-placeholder="faviconPlaceholderShort" placeholder="مثال: MyApp" value="MyApp">
             </div>
             <div class="form-group">
-                <label>📝 description (توضیحات)</label>
-                <input type="text" id="appDesc" placeholder="توضیح کوتاه برنامه" value="یک اپلیکیشن فوق‌العاده">
+                <label data-i18n="faviconLabelDesc">📝 description (توضیحات)</label>
+                <input type="text" id="appDesc" data-i18n-placeholder="faviconPlaceholderDesc" data-i18n-value="faviconDefaultDesc" placeholder="توضیح کوتاه برنامه" value="یک اپلیکیشن فوق‌العاده">
             </div>
             <div class="form-group">
-                <label>🎨 background_color (رنگ پس‌زمینه splash)</label>
+                <label data-i18n="faviconLabelBg">🎨 background_color (رنگ پس‌زمینه splash)</label>
                 <input type="color" id="bgColor" value="#181b38">
             </div>
             <div class="form-group">
-                <label>🎨 theme_color (رنگ نوار مرورگر)</label>
+                <label data-i18n="faviconLabelTheme">🎨 theme_color (رنگ نوار مرورگر)</label>
                 <input type="color" id="themeColor" value="#9d6cab">
             </div>
             <div class="form-group">
-                <label>📱 display (نحوه نمایش)</label>
+                <label data-i18n="faviconLabelDisplay">📱 display (نحوه نمایش)</label>
                 <select id="displayMode">
                     <option value="standalone">standalone</option>
                     <option value="fullscreen">fullscreen</option>
@@ -71,7 +71,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>🧭 orientation (جهت صفحه)</label>
+                <label data-i18n="faviconLabelOrientation">🧭 orientation (جهت صفحه)</label>
                 <select id="orientation">
                     <option value="any">any</option>
                     <option value="portrait">portrait</option>
@@ -81,27 +81,28 @@
         </div>
     </div>
 
-    <button id="generateBtn">✨ تولید favicon‌ها و فایل‌های مورد نیاز (ZIP)</button>
+    <button id="generateBtn" data-i18n="faviconGenerateBtn">✨ تولید favicon‌ها و فایل‌های مورد نیاز (ZIP)</button>
 
     <div id="statusMsg" class="status" style="display: none;"></div>
 
     <div class="result-area" id="resultArea" style="display: none;">
-        <h3>📋 کد HTML مورد نیاز (قرار دهید در <head>)</h3>
+        <h3 data-i18n="faviconHtmlTitle">📋 کد HTML مورد نیاز (قرار دهید در <head>)</h3>
         <pre id="htmlCode" style="white-space: pre-wrap;" dir="ltr"></pre>
         <hr>
-        <h3>📄 محتوای manifest.json</h3>
+        <h3 data-i18n="faviconManifestTitle">📄 محتوای manifest.json</h3>
         <pre id="manifestCode" dir="ltr"></pre>
         <hr>
         <div id="iconPreviewList" class="icon-grid"></div>
-        <button id="downloadZipBtn" style="background: #6b4e9e; margin-top: 20px;">📦 دانلود ZIP شامل تمام فایل‌ها</button>
+        <button id="downloadZipBtn" style="background: #6b4e9e; margin-top: 20px;" data-i18n="faviconDownloadZip">📦 دانلود ZIP شامل تمام فایل‌ها</button>
     </div>
     <footer>
-        🔒 تمام عملیات در مرورگر شما انجام می‌شود — هیچ فایلی به سرور ارسال نمی‌شود.<br>
-        🧩 سایزهای PNG: 16, 32, 57, 72, 96, 120, 144, 152, 180, 192, 384, 512 + favicon.ico (ساخته شده از 32px).
+        <span data-i18n="privacyFooterNoUpload">🔒 تمام عملیات در مرورگر شما انجام می‌شود — هیچ فایلی به سرور ارسال نمی‌شود.</span><br>
+        <span data-i18n-html="faviconFooter">🧩 سایزهای PNG: 16, 32, 57, 72, 96, 120, 144, 152, 180, 192, 384, 512 + favicon.ico (ساخته شده از 32px).</span>
     </footer>
 </div>
 
+<script src="../../translations.js"></script>
+<script src="../../script.js"></script>
 <script src="favicon-generator.js"></script>
-  <script src="../../script.js"></script>
 </body>
 </html>

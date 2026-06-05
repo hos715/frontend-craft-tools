@@ -28,7 +28,7 @@
       </div>
 
       <div class="dropzone" id="dropzone">
-        📂 فایل PNG رو بکش اینجا یا کلیک کن (چند فایل هم می‌تونی انتخاب کنی)
+        <span data-i18n="pngDropzone">📂 فایل PNG رو بکش اینجا یا کلیک کن (چند فایل هم می‌تونی انتخاب کنی)</span>
         <input
           type="file"
           id="fileInput"
@@ -40,7 +40,7 @@
 
       <div class="controls">
         <div class="slider-container">
-          <span>🎨 کیفیت WebP:</span>
+          <span data-i18n="pngQualityLabel">🎨 کیفیت WebP:</span>
           <input
             type="range"
             id="qualitySlider"
@@ -50,23 +50,24 @@
           />
           <span class="quality-value" id="qualityValue">82%</span>
         </div>
-        <div style="font-size: 0.8rem; color: #aaa">
+        <div style="font-size: 0.8rem; color: #aaa" data-i18n="pngQualityHint">
           کیفیت بالاتر = حجم بیشتر | پیشنهاد: 75-85 برای عکس، 90+ برای گرافیک
           ظریف
         </div>
       </div>
 
-      <button id="convertBtn">✨ شروع تبدیل فایل‌های انتخاب شده به WebP</button>
+      <button id="convertBtn" data-i18n="pngConvertBtn">✨ شروع تبدیل فایل‌های انتخاب شده به WebP</button>
 
       <div id="status" class="status"></div>
       <div id="previewContainer" class="preview-area"></div>
       <footer>
-        🔥 WebP واقعی — تصاویر تا 70-80% کوچک‌تر از PNG با کیفیت چشمگیر.<br />
-        ✅ از شفافیت (Alpha) پشتیبانی می‌کند.
+        <span data-i18n="pngFooter1">🔥 WebP واقعی — تصاویر تا 70-80% کوچک‌تر از PNG با کیفیت چشمگیر.</span><br />
+        <span data-i18n="pngFooter2">✅ از شفافیت (Alpha) پشتیبانی می‌کند.</span>
       </footer>
     </div>
 
-    <script src="png-optimizer.js"></script>
+    <script src="../../translations.js"></script>
     <script src="../../script.js"></script>
+    <script src="png-optimizer.js"></script>
 </body>
 </html>

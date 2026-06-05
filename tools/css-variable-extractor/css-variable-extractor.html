@@ -27,7 +27,7 @@
         نوع، پیش‌نمایش رنگ و کپی خروجی
       </div>
 
-      <div class="upload-area" id="uploadArea">
+      <div class="upload-area" id="uploadArea" data-i18n="cssVarUpload">
         📂 فایل CSS را بکشید یا کلیک کنید (یا مستقیماً در کادر زیر paste کنید)
         <input
           type="file"
@@ -39,6 +39,7 @@
 
       <textarea
         id="cssInput"
+        data-i18n-placeholder="cssVarPlaceholder"
         placeholder="کد CSS خود را اینجا paste کنید... 
 
 مثال:
@@ -52,14 +53,14 @@
       ></textarea>
 
       <div class="controls">
-        <button id="extractBtn">✨ استخراج متغیرها</button>
-        <button id="copyCssBtn" class="copy-btn" disabled>
+        <button id="extractBtn" data-i18n="cssVarExtractBtn">✨ استخراج متغیرها</button>
+        <button id="copyCssBtn" class="copy-btn" disabled data-i18n="cssVarCopyCssBtn">
           📋 کپی به صورت CSS
         </button>
-        <button id="copyJsonBtn" class="copy-btn" disabled>
+        <button id="copyJsonBtn" class="copy-btn" disabled data-i18n="cssVarCopyJsonBtn">
           📋 کپی به صورت JSON
         </button>
-        <button id="clearBtn" class="copy-btn" style="background: #5e2a2a">
+        <button id="clearBtn" class="copy-btn" style="background: #5e2a2a" data-i18n="cssVarClearBtn">
           🗑️ پاک کردن
         </button>
       </div>
@@ -70,17 +71,17 @@
           <table id="varTable">
             <thead>
               <tr>
-                <th>نام متغیر</th>
-                <th>مقدار</th>
-                <th>نوع</th>
-                <th>پیش‌نمایش</th>
+                <th data-i18n="cssVarColName">نام متغیر</th>
+                <th data-i18n="cssVarColValue">مقدار</th>
+                <th data-i18n="cssVarColType">نوع</th>
+                <th data-i18n="cssVarColPreview">پیش‌نمایش</th>
               </tr>
             </thead>
             <tbody id="varTableBody"></tbody>
           </table>
         </div>
         <div class="copy-group">
-          <button id="downloadCssBtn" style="background: #4a7a6e">
+          <button id="downloadCssBtn" style="background: #4a7a6e" data-i18n="cssVarDownloadBtn">
             💾 دانلود CSS متغیرها
           </button>
         </div>
@@ -88,14 +89,15 @@
 
       <div id="errorMsg" class="alert" style="display: none"></div>
       <footer>
-        🔒 تمام عملیات در مرورگر شما انجام می‌شود — فایل‌ها به سرور ارسال
-        نمی‌شوند.<br />
-        💡 مقادیر HSL خام با اعشار (مثل `222.2 84% 4.9%`) نیز به عنوان رنگ
-        شناسایی و پیش‌نمایش داده می‌شوند.
+        <span data-i18n="privacyFooterNoUpload">🔒 تمام عملیات در مرورگر شما انجام می‌شود — فایل‌ها به سرور ارسال
+        نمی‌شوند.</span><br />
+        <span data-i18n-html="cssVarFooterTip">💡 مقادیر HSL خام با اعشار (مثل `222.2 84% 4.9%`) نیز به عنوان رنگ
+        شناسایی و پیش‌نمایش داده می‌شوند.</span>
       </footer>
     </div>
 
-    <script src="css-variable-extractor.js"></script>
+    <script src="../../translations.js"></script>
     <script src="../../script.js"></script>
+    <script src="css-variable-extractor.js"></script>
 </body>
 </html>

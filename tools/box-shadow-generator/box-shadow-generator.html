@@ -33,7 +33,7 @@
           </div>
 
           <div id="shadowsContainer"></div>
-          <button id="addShadowBtn" class="add-shadow-btn">
+          <button id="addShadowBtn" class="add-shadow-btn" data-i18n="boxShadowAddBtn">
             + افزودن سایه جدید
           </button>
         </div>
@@ -41,21 +41,22 @@
         <div class="col">
           <div class="code-area">
             <pre id="cssOutput">box-shadow: none;</pre>
-            <button id="copyBtn" class="copy-btn">📋 کپی CSS</button>
+            <button id="copyBtn" class="copy-btn" data-i18n="copyCssBtn">📋 کپی CSS</button>
           </div>
-          <div style="margin-top: 1rem; font-size: 0.8rem; color: #aaa">
+          <div style="margin-top: 1rem; font-size: 0.8rem; color: #aaa" data-i18n="boxShadowTip">
             💡 نکته: هر سایه می‌تواند افقی، عمودی، blur، spread، رنگ و حالت
             inset داشته باشد.
           </div>
         </div>
       </div>
-      <footer>
+      <footer data-i18n="boxShadowFooter">
         🔒 تمام عملیات در مرورگر شما انجام می‌شود — سایه‌ها در real-time بروز
         می‌شوند.
       </footer>
     </div>
 
-    <script src="box-shadow-generator.js"></script>
+    <script src="../../translations.js"></script>
     <script src="../../script.js"></script>
+    <script src="box-shadow-generator.js"></script>
 </body>
 </html>

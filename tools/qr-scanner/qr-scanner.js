@@ -21,7 +21,7 @@ const startCameraBtn = document.getElementById('startCameraBtn');
 
       async function startCamera() {
         if (isScanning) {
-          showMessage('دوربین قبلاً روشن است');
+          showMessage(getTranslation('qrScannerCameraOn'));
           return;
         }
         if (!html5QrCode) {
@@ -38,7 +38,7 @@ const startCameraBtn = document.getElementById('startCameraBtn');
             },
             (decodedText, decodedResult) => {
               // موفقیت
-              showMessage('✅ QR کد با موفقیت اسکن شد');
+              showMessage(getTranslation('qrScannerSuccess'));
               displayResult(decodedText);
               stopCamera(); // اختیاری: بعد از اولین اسکن دوربین را ببند
             },
@@ -48,10 +48,10 @@ const startCameraBtn = document.getElementById('startCameraBtn');
             },
           );
           isScanning = true;
-          showMessage('دوربین روشن شد. QR کد را در کادر قرار دهید.');
+          showMessage(getTranslation('qrScannerCameraStarted'));
         } catch (err) {
           console.error(err);
-          showMessage('خطا در دسترسی به دوربین: ' + err.message, true);
+          showMessage(getTranslation('qrScannerCameraError') + err.message, true);
           readerDiv.style.display = 'none';
         }
       }
@@ -62,7 +62,7 @@ const startCameraBtn = document.getElementById('startCameraBtn');
             await html5QrCode.stop();
             readerDiv.style.display = 'none';
             isScanning = false;
-            showMessage('دوربین متوقف شد');
+            showMessage(getTranslation('qrScannerCameraStopped'));
           } catch (err) {
             console.error(err);
           }
@@ -99,11 +99,11 @@ const startCameraBtn = document.getElementById('startCameraBtn');
               .scanFile(file, true)
               .then((decodedText) => {
                 displayResult(decodedText);
-                showMessage('✅ اسکن از تصویر موفق بود');
+                showMessage(getTranslation('qrScannerImageSuccess'));
               })
               .catch((err) => {
                 console.error(err);
-                showMessage('QR کدی در تصویر پیدا نشد', true);
+                showMessage(getTranslation('qrScannerNotFound'), true);
               });
             URL.revokeObjectURL(objectUrl);
             return;
@@ -112,14 +112,14 @@ const startCameraBtn = document.getElementById('startCameraBtn');
           URL.revokeObjectURL(objectUrl);
           if (code) {
             displayResult(code.data);
-            showMessage('✅ اسکن از تصویر موفق بود');
+            showMessage(getTranslation('qrScannerImageSuccess'));
           } else {
-            showMessage('QR کدی در تصویر پیدا نشد', true);
+            showMessage(getTranslation('qrScannerNotFound'), true);
           }
         };
         img.onerror = () => {
           URL.revokeObjectURL(objectUrl);
-          showMessage('خطا در بارگذاری تصویر', true);
+          showMessage(getTranslation('imageLoadError'), true);
         };
         img.src = objectUrl;
       }
@@ -132,7 +132,7 @@ const startCameraBtn = document.getElementById('startCameraBtn');
           script.src =
             'https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js';
           script.onload = () => resolve();
-          script.onerror = () => reject(new Error('خطا در لود jsQR'));
+          script.onerror = () => reject(new Error(getTranslation('qrScannerJsqrError')));
           document.head.appendChild(script);
         });
       }
@@ -142,10 +142,10 @@ const startCameraBtn = document.getElementById('startCameraBtn');
         if (fileInput.files.length) {
           const file = fileInput.files[0];
           if (!file.type.startsWith('image/')) {
-            showMessage('لطفاً یک فایل تصویری انتخاب کنید', true);
+            showMessage(getTranslation('qrScannerSelectImage'), true);
             return;
           }
-          showMessage('در حال اسکن تصویر...');
+          showMessage(getTranslation('qrScannerScanning'));
           try {
             await loadJsQR();
             await scanImageFile(file);
@@ -156,11 +156,11 @@ const startCameraBtn = document.getElementById('startCameraBtn');
               .scanFile(file, true)
               .then((decodedText) => {
                 displayResult(decodedText);
-                showMessage('✅ اسکن از تصویر موفق بود');
+                showMessage(getTranslation('qrScannerImageSuccess'));
               })
               .catch((err2) => {
                 console.error(err2);
-                showMessage('QR کدی در تصویر پیدا نشد', true);
+                showMessage(getTranslation('qrScannerNotFound'), true);
               });
           }
         }
@@ -174,9 +174,10 @@ const startCameraBtn = document.getElementById('startCameraBtn');
         navigator.clipboard
           .writeText(text)
           .then(() => {
-            const old = copyResultBtn.textContent;
-            copyResultBtn.textContent = '✅ کپی شد!';
-            setTimeout(() => (copyResultBtn.textContent = old), 1500);
+            copyResultBtn.textContent = getTranslation('copySuccess');
+            setTimeout(() => {
+              copyResultBtn.textContent = getTranslation('copyTextBtn');
+            }, 1500);
           })
-          .catch(() => showMessage('خطا در کپی', true));
+          .catch(() => showMessage(getTranslation('copyError'), true));
       });

@@ -30,7 +30,7 @@
 
     function handleImage(file) {
         if (!file.type.startsWith('image/')) {
-            showStatus('فایل انتخاب شده تصویر نیست', 'error');
+            showStatus(getTranslation('notImageFile'), 'error');
             return;
         }
         const reader = new FileReader();
@@ -39,21 +39,21 @@
             img.onload = () => {
                 // محدودیت جدید: حداقل 256x256
                 if (img.width < 256 || img.height < 256) {
-                    showStatus(`ابعاد تصویر ${img.width}x${img.height} است. حداقل ابعاد مورد نیاز 256x256 پیکسل می‌باشد.`, 'error');
+                    showStatus(getTranslation('faviconDimError', { w: img.width, h: img.height }), 'error');
                     uploadedImage = null;
                     previewContainer.innerHTML = '';
                     return;
                 }
                 uploadedImage = img;
                 previewContainer.innerHTML = `<img src="${e.target.result}" class="preview-img" style="max-width:100%; max-height:150px; border-radius:20px;">`;
-                showStatus(`تصویر با ابعاد ${img.width}x${img.height} بارگذاری شد.`, 'success');
+                showStatus(getTranslation('faviconImageLoaded', { w: img.width, h: img.height }), 'success');
                 
                 // هشدار در صورت کوچک بودن برای سایزهای بزرگ
                 if (img.width < 512 || img.height < 512) {
-                    showStatus('توجه: ابعاد تصویر کمتر از 512 پیکسل است. آیکون‌های 384 و 512 با بزرگنمایی تولید می‌شوند و کیفیت پایین‌تری خواهند داشت.', 'warning');
+                    showStatus(getTranslation('faviconUpscaleWarning'), 'warning');
                 }
             };
-            img.onerror = () => showStatus('خطا در بارگذاری تصویر', 'error');
+            img.onerror = () => showStatus(getTranslation('imageLoadError'), 'error');
             img.src = e.target.result;
         };
         reader.readAsDataURL(file);
@@ -118,11 +118,11 @@
 
     async function generateAll() {
         if (!uploadedImage) {
-            showStatus('لطفاً ابتدا یک تصویر با حداقل ابعاد 256x256 انتخاب کنید', 'error');
+            showStatus(getTranslation('faviconSelectImage256'), 'error');
             return;
         }
 
-        showStatus('⚙️ در حال تولید آیکون‌ها ... (ممکن است چند لحظه طول بکشد)', 'success');
+        showStatus(getTranslation('faviconGenerating'), 'success');
         
         generatedBlobs.clear();
         // تولید PNG برای هر سایز
@@ -180,14 +180,14 @@
         }
         
         resultArea.style.display = 'block';
-        showStatus('تولید فایل‌ها با موفقیت انجام شد. می‌توانید ZIP را دانلود کنید.');
+        showStatus(getTranslation('faviconGenerateSuccess'));
     }
 
     generateBtn.addEventListener('click', generateAll);
     
     downloadZipBtn.addEventListener('click', async () => {
         if (generatedBlobs.size === 0 || !manifestObject) {
-            showStatus('ابتدا دکمه "تولید" را بزنید', 'error');
+            showStatus(getTranslation('faviconGenerateFirst'), 'error');
             return;
         }
         const zip = new JSZip();
@@ -205,5 +205,5 @@
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
-        showStatus('ZIP دانلود شد. شامل تمام favicon‌ها و manifest.json');
+        showStatus(getTranslation('faviconZipDownloaded'));
     });

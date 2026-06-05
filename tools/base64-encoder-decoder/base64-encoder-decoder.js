@@ -67,7 +67,11 @@ const tabBtns = document.querySelectorAll('.tab-btn');
           base64Output.value = dataUrl;
           currentBase64Data = dataUrl;
           encodeResultDiv.style.display = 'block';
-          encodeInfo.innerHTML = `نام فایل: ${file.name} — حجم: ${(file.size / 1024).toFixed(2)} KB — نوع: ${file.type || 'نامشخص'}`;
+          encodeInfo.innerHTML = getTranslation('base64FileInfo', {
+            name: file.name,
+            size: (file.size / 1024).toFixed(2),
+            type: file.type || getTranslation('unknownType'),
+          });
         };
         reader.readAsDataURL(file);
       }
@@ -96,11 +100,13 @@ const tabBtns = document.querySelectorAll('.tab-btn');
         navigator.clipboard
           .writeText(base64Output.value)
           .then(() => {
-            const old = copyBase64Btn.textContent;
-            copyBase64Btn.textContent = '✅ کپی شد!';
-            setTimeout(() => (copyBase64Btn.textContent = old), 1500);
+            copyBase64Btn.textContent = getTranslation('copySuccess');
+            setTimeout(
+              () => (copyBase64Btn.textContent = getTranslation('copyTextBtn')),
+              1500,
+            );
           })
-          .catch(() => alert('خطا در کپی'));
+          .catch(() => alert(getTranslation('copyError')));
       });
 
       downloadFromBase64Btn.addEventListener('click', () => {
@@ -116,7 +122,7 @@ const tabBtns = document.querySelectorAll('.tab-btn');
           const blob = new Blob([array], { type: mime });
           downloadBlob(blob, mime, 'base64_export');
         } else {
-          alert('فرمت Base64 نامعتبر');
+          alert(getTranslation('base64InvalidFormat'));
         }
       });
 
@@ -149,18 +155,24 @@ const tabBtns = document.querySelectorAll('.tab-btn');
             decodePreview.appendChild(img);
           } else {
             const p = document.createElement('p');
-            p.textContent = `نوع فایل: ${mime} — حجم: ${(blob.size / 1024).toFixed(2)} KB`;
+            p.textContent = getTranslation('base64FileTypeInfo', {
+              mime,
+              size: (blob.size / 1024).toFixed(2),
+            });
             decodePreview.appendChild(p);
           }
           decodeResultDiv.style.display = 'block';
-          let infoMsg = `نوع MIME: ${mime} — حجم: ${(blob.size / 1024).toFixed(2)} KB`;
+          let infoMsg = getTranslation('base64MimeInfo', {
+            mime,
+            size: (blob.size / 1024).toFixed(2),
+          });
           if (mime === 'application/octet-stream') {
-            infoMsg += `<br>⚠️ نوع فایل نامشخص. هنگام دانلود، پسوند .heic استفاده خواهد شد.`;
+            infoMsg += `<br>${getTranslation('base64HeicWarning')}`;
           }
           decodeInfo.innerHTML = infoMsg;
           return true;
         } catch (e) {
-          alert('رشته Base64 نامعتبر است: ' + e.message);
+          alert(getTranslation('base64InvalidString') + e.message);
           return false;
         }
       }
@@ -168,7 +180,7 @@ const tabBtns = document.querySelectorAll('.tab-btn');
       decodeBtn.addEventListener('click', () => {
         const input = base64Input.value.trim();
         if (!input) {
-          alert('لطفاً رشته Base64 را وارد کنید');
+          alert(getTranslation('base64EnterString'));
           return;
         }
         decodeBase64ToFile(input);

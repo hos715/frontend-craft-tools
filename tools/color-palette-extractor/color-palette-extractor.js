@@ -79,11 +79,11 @@ const dropZone = document.getElementById('dropZone');
           card.innerHTML = `
                 <div class="color-preview" style="background: ${hexForPreview};"></div>
                 <div class="color-value">${colorValue}</div>
-                <div style="font-size:0.6rem; margin-top:4px;">رنگ ${index + 1}</div>
+                <div style="font-size:0.6rem; margin-top:4px;">${getTranslation('colorPaletteColorN', { n: index + 1 })}</div>
             `;
           card.addEventListener('click', () => {
             navigator.clipboard.writeText(colorValue);
-            showMessage(`کپی شد: ${colorValue}`);
+            showMessage(getTranslation('colorPaletteCopied', { value: colorValue }));
           });
           paletteContainer.appendChild(card);
         });
@@ -116,7 +116,7 @@ const dropZone = document.getElementById('dropZone');
 
       function handleImage(file) {
         if (!file.type.startsWith('image/')) {
-          showMessage('فایل انتخاب شده تصویر نیست', true);
+          showMessage(getTranslation('notImageFile'), true);
           return;
         }
         const reader = new FileReader();
@@ -125,9 +125,9 @@ const dropZone = document.getElementById('dropZone');
           img.onload = () => {
             currentImage = img;
             previewContainer.innerHTML = `<img src="${e.target.result}" class="preview-img" alt="preview">`;
-            showMessage('تصویر بارگذاری شد. برای استخراج پالت کلیک کنید.');
+            showMessage(getTranslation('colorPaletteImageLoaded'));
           };
-          img.onerror = () => showMessage('خطا در بارگذاری تصویر', true);
+          img.onerror = () => showMessage(getTranslation('imageLoadError'), true);
           img.src = e.target.result;
         };
         reader.readAsDataURL(file);
@@ -199,21 +199,21 @@ const dropZone = document.getElementById('dropZone');
 
       function extractPalette() {
         if (!currentImage) {
-          showMessage('لطفاً ابتدا یک تصویر انتخاب کنید', true);
+          showMessage(getTranslation('selectImageFirst'), true);
           return;
         }
         const numColors = parseInt(colorCountSlider.value);
-        showMessage('در حال استخراج رنگ‌ها... لطفاً صبر کنید');
+        showMessage(getTranslation('colorPaletteExtracting'));
         setTimeout(() => {
           try {
             const palette = extractPaletteFromImage(currentImage, numColors);
-            if (!palette.length) throw new Error('رنگی یافت نشد');
+            if (!palette.length) throw new Error(getTranslation('colorPaletteNoColors'));
             currentPalette = palette;
             updatePaletteDisplay();
-            showMessage(`✅ پالت با ${palette.length} رنگ استخراج شد`);
+            showMessage(getTranslation('colorPaletteSuccess', { count: palette.length }));
           } catch (err) {
             console.error(err);
-            showMessage('خطا در استخراج رنگ‌ها: ' + err.message, true);
+            showMessage(getTranslation('colorPaletteExtractError') + err.message, true);
           }
         }, 50);
       }
@@ -224,11 +224,17 @@ const dropZone = document.getElementById('dropZone');
         navigator.clipboard
           .writeText(cssText)
           .then(() => {
-            const old = copyCssBtn.textContent;
-            copyCssBtn.textContent = '✅ کپی شد!';
-            setTimeout(() => (copyCssBtn.textContent = old), 1500);
+            copyCssBtn.textContent = getTranslation('copySuccess');
+            setTimeout(
+              () => (copyCssBtn.textContent = getTranslation('copyBtn')),
+              1500,
+            );
           })
-          .catch(() => showMessage('خطا در کپی', true));
+          .catch(() => showMessage(getTranslation('copyError'), true));
+      });
+
+      window.addEventListener('languageChanged', () => {
+        if (currentPalette.length) updatePaletteDisplay();
       });
 
       // تغییر فرمت

@@ -27,7 +27,7 @@
       </div>
 
       <div class="upload-area" id="dropZone">
-        📂 تصویر را بکشید یا کلیک کنید (PNG, JPG, WebP)
+        <span data-i18n="imageCompressorUpload">📂 تصویر را بکشید یا کلیک کنید (PNG, JPG, WebP)</span>
         <input
           type="file"
           id="fileInput"
@@ -38,7 +38,7 @@
 
       <div class="controls">
         <div class="control-row">
-          <label>🎨 کیفیت فشرده‌سازی</label>
+          <label data-i18n="imageCompressorQualityLabel">🎨 کیفیت فشرده‌سازی</label>
           <input type="range" id="qualityRange" min="10" max="100" value="85" />
           <input
             type="number"
@@ -48,32 +48,32 @@
           />%
         </div>
         <div class="control-row">
-          <label>📦 فرمت خروجی</label>
+          <label data-i18n="imageCompressorFormatLabel">📦 فرمت خروجی</label>
           <select id="outputFormat">
-            <option value="image/jpeg">
+            <option value="image/jpeg" data-i18n="imageCompressorFormatJpeg">
               JPEG (با اتلاف، کیفیت قابل تنظیم)
             </option>
-            <option value="image/webp">
+            <option value="image/webp" data-i18n="imageCompressorFormatWebp">
               WebP (با اتلاف، کیفیت قابل تنظیم)
             </option>
-            <option value="image/png">PNG (بدون اتلاف، حجم بیشتر)</option>
+            <option value="image/png" data-i18n="imageCompressorFormatPng">PNG (بدون اتلاف، حجم بیشتر)</option>
           </select>
         </div>
-        <button id="compressBtn">✨ شروع فشرده‌سازی</button>
+        <button id="compressBtn" data-i18n="imageCompressorCompressBtn">✨ شروع فشرده‌سازی</button>
       </div>
 
       <div id="previewArea" style="display: none">
         <div class="preview">
           <div class="preview-card">
-            <h3>📁 تصویر اصلی</h3>
+            <h3 data-i18n="imageCompressorOriginalTitle">📁 تصویر اصلی</h3>
             <img id="originalImg" alt="original" />
             <div id="originalSize" class="stats"></div>
           </div>
           <div class="preview-card">
-            <h3>🗜️ تصویر فشرده شده</h3>
+            <h3 data-i18n="imageCompressorCompressedTitle">🗜️ تصویر فشرده شده</h3>
             <img id="compressedImg" alt="compressed" />
             <div id="compressedSize" class="stats"></div>
-            <button id="downloadBtn" style="margin-top: 8px">
+            <button id="downloadBtn" style="margin-top: 8px" data-i18n="imageCompressorDownloadBtn">
               💾 دانلود تصویر فشرده
             </button>
           </div>
@@ -82,13 +82,13 @@
 
       <div id="statusMsg" class="stats" style="display: none"></div>
       <footer>
-        🔒 تمام عملیات در مرورگر شما انجام می‌شود — تصاویر به سرور ارسال
-        نمی‌شوند.<br />
-        💡 نکته: برای تصاویر PNG با پس‌زمینه شفاف، فرمت WebP بهترین گزینه است.
+        <span data-i18n="privacyFooterImages">🔒 تمام عملیات در مرورگر شما انجام می‌شود — تصاویر به سرور ارسال نمی‌شوند.</span><br />
+        <span data-i18n-html="imageCompressorFooterTip">💡 نکته: برای تصاویر PNG با پس‌زمینه شفاف، فرمت WebP بهترین گزینه است.</span>
       </footer>
     </div>
 
-    <script src="image-compressor.js"></script>
+    <script src="../../translations.js"></script>
     <script src="../../script.js"></script>
+    <script src="image-compressor.js"></script>
 </body>
 </html>

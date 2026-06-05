@@ -30,10 +30,10 @@
       </div>
 
       <div class="toolbar">
-        <button id="resetBtn">↺ بازنشانی به نمونه</button>
+        <button id="resetBtn" data-i18n="markdownResetBtn">↺ بازنشانی به نمونه</button>
         <div class="direction-buttons">
-            <button id="rtlBtn">RTL (راست‌چین)</button>
-          <button id="ltrBtn" class="active-dir">LTR (چپ‌چین)</button>
+            <button id="rtlBtn" data-i18n="markdownRtlBtn">RTL (راست‌چین)</button>
+          <button id="ltrBtn" class="active-dir" data-i18n="markdownLtrBtn">LTR (چپ‌چین)</button>
         </div>
       </div>
 
@@ -41,6 +41,7 @@
         <div class="editor">
           <textarea
             id="markdownInput"
+            data-i18n-placeholder="markdownPlaceholder"
             placeholder="متن Markdown خود را اینجا بنویسید..."
           ></textarea>
         </div>
@@ -48,17 +49,18 @@
           <div class="preview-box" id="preview" dir="ltr"></div>
         </div>
       </div>
-      <div class="status">
+      <div class="status" data-i18n="markdownTip">
         💡 نکته: با دکمه‌های بالا می‌توانید جهت نمایش خروجی و ویرایشگر را تغییر
         دهید (مناسب برای متون فارسی/عربی).
       </div>
-      <footer>
+      <footer data-i18n="markdownFooter">
         🔒 تمام عملیات در مرورگر شما انجام می‌شود — از کتابخانه marked برای
         تبدیل استفاده شده است.
       </footer>
     </div>
 
-    <script src="markdown-previewer.js"></script>
+    <script src="../../translations.js"></script>
     <script src="../../script.js"></script>
+    <script src="markdown-previewer.js"></script>
 </body>
 </html>

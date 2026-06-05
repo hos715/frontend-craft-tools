@@ -145,3 +145,21 @@ footer {
     margin-top: 2rem;
     color: #5a5e7e;
 }
+
+.footer-links {
+    margin-top: 0.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-links a {
+    color: #9d6cab;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}

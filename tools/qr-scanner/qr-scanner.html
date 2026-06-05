@@ -32,8 +32,8 @@
       </div>
 
       <div class="scanner-options">
-        <button id="startCameraBtn">📸 شروع دوربین</button>
-        <button id="stopCameraBtn" style="background: #5e2a2a">
+        <button id="startCameraBtn" data-i18n="qrScannerStartCamera">📸 شروع دوربین</button>
+        <button id="stopCameraBtn" style="background: #5e2a2a" data-i18n="qrScannerStopCamera">
           ⏹️ توقف دوربین
         </button>
       </div>
@@ -41,7 +41,7 @@
       <div id="reader" style="display: none"></div>
 
       <div class="upload-area" id="uploadArea">
-        📂 یا یک تصویر حاوی QR Code را آپلود کنید (PNG, JPG)
+        <span data-i18n="qrScannerUpload">📂 یا یک تصویر حاوی QR Code را آپلود کنید (PNG, JPG)</span>
         <input
           type="file"
           id="fileInput"
@@ -51,19 +51,20 @@
       </div>
 
       <div id="resultArea" class="result" style="display: none">
-        <h3>📄 نتیجه اسکن</h3>
+        <h3 data-i18n="qrScannerResultTitle">📄 نتیجه اسکن</h3>
         <pre id="qrResultText"></pre>
-        <button id="copyResultBtn" class="copy-btn">📋 کپی متن</button>
+        <button id="copyResultBtn" class="copy-btn" data-i18n="copyTextBtn">📋 کپی متن</button>
       </div>
 
       <div id="statusMsg" class="status"></div>
-      <footer>
+      <footer data-i18n="privacyFooterImages">
         🔒 تمام عملیات در مرورگر شما انجام می‌شود — تصاویر به سرور ارسال
         نمی‌شوند.
       </footer>
     </div>
 
-    <script src="qr-scanner.js"></script>
+    <script src="../../translations.js"></script>
     <script src="../../script.js"></script>
+    <script src="qr-scanner.js"></script>
 </body>
 </html>

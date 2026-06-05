@@ -30,7 +30,7 @@
       <div class="two-columns">
         <div class="col">
           <div class="upload-area" id="dropZone">
-            📂 فایل SVG را بکشید یا کلیک کنید
+            <span data-i18n="svgUpload">📂 فایل SVG را بکشید یا کلیک کنید</span>
             <input
               type="file"
               id="fileInput"
@@ -40,60 +40,62 @@
           </div>
           <textarea
             id="inputSvg"
+            data-i18n-placeholder="svgInputPlaceholder"
             placeholder="یا کد SVG را مستقیماً اینجا paste کنید..."
           ></textarea>
           <div class="options">
             <div class="option-row">
               <label
-                ><input type="checkbox" id="optRemoveComments" checked /> حذف
-                کامنت‌ها (<!-- ... -->)</label
+                ><input type="checkbox" id="optRemoveComments" checked />
+                <span data-i18n="svgOptRemoveComments">حذف کامنت‌ها (<!-- ... -->)</span></label
               >
               <label
-                ><input type="checkbox" id="optRemoveMetadata" checked /> حذف
-                تگ‌های متادیتا (metadata, sodipodi, inkscape)</label
+                ><input type="checkbox" id="optRemoveMetadata" checked />
+                <span data-i18n="svgOptRemoveMetadata">حذف تگ‌های متادیتا (metadata, sodipodi, inkscape)</span></label
               >
               <label
-                ><input type="checkbox" id="optMinifyWhitespace" checked /> حذف
-                فاصله‌ها و خطوط اضافی (minify)</label
+                ><input type="checkbox" id="optMinifyWhitespace" checked />
+                <span data-i18n="svgOptMinifyWhitespace">حذف فاصله‌ها و خطوط اضافی (minify)</span></label
               >
             </div>
             <div class="option-row">
               <label
-                ><input type="checkbox" id="optRoundNumbers" checked /> گرد کردن
-                اعداد (۳ رقم اعشار)</label
+                ><input type="checkbox" id="optRoundNumbers" checked />
+                <span data-i18n="svgOptRoundNumbers">گرد کردن اعداد (۳ رقم اعشار)</span></label
               >
               <label
-                ><input type="checkbox" id="optRemoveEmptyTags" checked /> حذف
-                تگ‌های خالی</label
+                ><input type="checkbox" id="optRemoveEmptyTags" checked />
+                <span data-i18n="svgOptRemoveEmptyTags">حذف تگ‌های خالی</span></label
               >
               <label
-                ><input type="checkbox" id="optRemoveDoctype" checked /> حذف
-                DOCTYPE</label
+                ><input type="checkbox" id="optRemoveDoctype" checked />
+                <span data-i18n="svgOptRemoveDoctype">حذف DOCTYPE</span></label
               >
             </div>
           </div>
           <div class="flex-buttons">
-            <button id="optimizeBtn">⚡ بهینه‌سازی</button>
-            <button id="copyOutputBtn">📋 کپی خروجی</button>
-            <button id="downloadBtn">💾 دانلود SVG</button>
+            <button id="optimizeBtn" data-i18n="svgOptimizeBtn">⚡ بهینه‌سازی</button>
+            <button id="copyOutputBtn" data-i18n="svgCopyOutputBtn">📋 کپی خروجی</button>
+            <button id="downloadBtn" data-i18n="svgDownloadBtn">💾 دانلود SVG</button>
           </div>
         </div>
 
         <div class="col">
           <div class="result-area">
-            <h3>📄 خروجی بهینه‌شده</h3>
+            <h3 data-i18n="svgOutputTitle">📄 خروجی بهینه‌شده</h3>
             <div class="stats" id="stats"></div>
             <pre id="outputSvg" dir="ltr"></pre>
           </div>
         </div>
       </div>
-      <footer>
+      <footer data-i18n="privacyFooterData">
         🔒 تمام عملیات در مرورگر شما انجام می‌شود — هیچ داده‌ای به سرور ارسال
         نمی‌شود.
       </footer>
     </div>
 
-    <script src="svg-optimizer.js"></script>
+    <script src="../../translations.js"></script>
     <script src="../../script.js"></script>
+    <script src="svg-optimizer.js"></script>
 </body>
 </html>

@@ -12,7 +12,6 @@ const dropzone = document.getElementById('dropzone');
         qualityValue.textContent = qualitySlider.value + '%';
       });
 
-      // باز کردن انتخاب فایل
       dropzone.addEventListener('click', () => fileInput.click());
       fileInput.addEventListener('change', (e) => {
         if (fileInput.files.length) {
@@ -20,12 +19,10 @@ const dropzone = document.getElementById('dropzone');
             (f) => f.type === 'image/png',
           );
           if (selectedFiles.length === 0) {
-            statusDiv.innerHTML =
-              '<span class="error">❌ فقط فایل‌های PNG قابل قبول هستند.</span>';
+            statusDiv.innerHTML = `<span class="error">${getTranslation('pngOnlyPng')}</span>`;
             return;
           }
-          statusDiv.innerHTML = `<span class="success">✅ ${selectedFiles.length} فایل PNG انتخاب شد. آماده تبدیل.</span>`;
-          // نمایش پیش‌نمایش کوچک
+          statusDiv.innerHTML = `<span class="success">${getTranslation('pngFilesSelected', { count: selectedFiles.length })}</span>`;
           previewContainer.innerHTML = '';
           selectedFiles.forEach((file, idx) => {
             const url = URL.createObjectURL(file);
@@ -36,12 +33,8 @@ const dropzone = document.getElementById('dropzone');
                     <div class="info-text">${file.name} (${(file.size / 1024).toFixed(1)} KB)</div>
                 `;
             previewContainer.appendChild(div);
-            URL.revokeObjectURL(url); // آزادسازی حافظه بعد از ساخت img
-            // اما img از url استفاده می‌کند و اگر revoke کنیم تصویر حذف می‌شود. روش بهتر:
-            // برای هر تصویر یک blob URL نگه داریم. اصلاحی سریع:
+            URL.revokeObjectURL(url);
           });
-          // اصلاح: آدرس blob را نگه داریم تا نمایش داده شود. من دوباره شیوه بهتری می‌نویسم:
-          // برای سادگی فعلاً دوباره نمایش را با یک حلقه درست انجام می‌دهیم:
           setTimeout(() => refreshPreviews(), 10);
         }
       });
@@ -57,11 +50,9 @@ const dropzone = document.getElementById('dropzone');
                 <div class="info-text">${file.name} (${(file.size / 1024).toFixed(1)} KB)</div>
             `;
           previewContainer.appendChild(div);
-          // note: URL.revokeObjectURL بعد از لود تصویر نباید سریع بزنیم، صبر می‌کنیم تا صفحه بسته شود. اشکالی ندارد.
         });
       }
 
-      // تبدیل یک فایل PNG به WebP و دانلود
       async function convertToWebP(file, quality) {
         return new Promise((resolve, reject) => {
           const img = new Image();
@@ -77,11 +68,7 @@ const dropzone = document.getElementById('dropzone');
                 if (blob) {
                   resolve(blob);
                 } else {
-                  reject(
-                    new Error(
-                      'تبدیل به WebP ناموفق (مرورگر از WebP پشتیبانی نمی‌کند؟)',
-                    ),
-                  );
+                  reject(new Error(getTranslation('pngWebpFailed')));
                 }
                 URL.revokeObjectURL(objectUrl);
               },
@@ -91,7 +78,7 @@ const dropzone = document.getElementById('dropzone');
           };
           img.onerror = () => {
             URL.revokeObjectURL(objectUrl);
-            reject(new Error('خطا در بارگذاری تصویر'));
+            reject(new Error(getTranslation('imageLoadError')));
           };
           img.src = objectUrl;
         });
@@ -99,13 +86,12 @@ const dropzone = document.getElementById('dropzone');
 
       convertBtn.addEventListener('click', async () => {
         if (selectedFiles.length === 0) {
-          statusDiv.innerHTML =
-            '<span class="error">⚠️ ابتدا فایل PNG انتخاب کن.</span>';
+          statusDiv.innerHTML = `<span class="error">${getTranslation('pngSelectFirst')}</span>`;
           return;
         }
 
         const quality = parseInt(qualitySlider.value, 10);
-        statusDiv.innerHTML = `<span class="success">🔄 در حال تبدیل ${selectedFiles.length} فایل به WebP با کیفیت ${quality}% ...</span>`;
+        statusDiv.innerHTML = `<span class="success">${getTranslation('pngConverting', { count: selectedFiles.length, quality })}</span>`;
 
         let successCount = 0;
         for (let i = 0; i < selectedFiles.length; i++) {
@@ -128,15 +114,14 @@ const dropzone = document.getElementById('dropzone');
             statusDiv.innerHTML += `<br>✅ ${newName} — ${(originalSize / 1024).toFixed(1)}KB → ${(newSize / 1024).toFixed(1)}KB ( -${percent}% )`;
             successCount++;
           } catch (err) {
-            statusDiv.innerHTML += `<br><span class="error">❌ خطا در ${file.name}: ${err.message}</span>`;
+            statusDiv.innerHTML += `<br><span class="error">${getTranslation('pngConvertError', { name: file.name, message: err.message })}</span>`;
           }
         }
         if (successCount === selectedFiles.length) {
-          statusDiv.innerHTML += `<br><span class="success">🎉 همه فایل‌ها با موفقیت تبدیل و دانلود شدند.</span>`;
+          statusDiv.innerHTML += `<br><span class="success">${getTranslation('pngConvertSuccess')}</span>`;
         }
       });
 
-      // درگ و دراپ
       dropzone.addEventListener('dragover', (e) => {
         e.preventDefault();
         dropzone.style.background = '#292e4a';
@@ -151,11 +136,10 @@ const dropzone = document.getElementById('dropzone');
           (f) => f.type === 'image/png',
         );
         if (files.length === 0) {
-          statusDiv.innerHTML =
-            '<span class="error">❌ فقط فایل PNG قابل قبول است.</span>';
+          statusDiv.innerHTML = `<span class="error">${getTranslation('pngOnlyPngSingle')}</span>`;
           return;
         }
         selectedFiles = files;
-        statusDiv.innerHTML = `<span class="success">✅ ${selectedFiles.length} فایل PNG با درگ و دراپ افزوده شد.</span>`;
+        statusDiv.innerHTML = `<span class="success">${getTranslation('pngFilesDropped', { count: selectedFiles.length })}</span>`;
         refreshPreviews();
       });

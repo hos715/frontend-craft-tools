@@ -80,8 +80,8 @@ const uploadArea = document.getElementById('uploadArea');
         varTableBody.innerHTML = '';
         if (!vars.length) {
           varTableBody.innerHTML =
-            '<tr><td colspan="4">هیچ متغیری یافت نشد</td></tr>';
-          statsDiv.innerHTML = '0 متغیر یافت شد';
+            `<tr><td colspan="4">${getTranslation('cssVarNoVars')}</td></tr>`;
+          statsDiv.innerHTML = getTranslation('cssVarCountZero');
           return;
         }
         for (const v of vars) {
@@ -115,7 +115,7 @@ const uploadArea = document.getElementById('uploadArea');
           row.appendChild(previewCell);
           varTableBody.appendChild(row);
         }
-        statsDiv.innerHTML = `${vars.length} متغیر یافت شد.`;
+        statsDiv.innerHTML = getTranslation('cssVarCount', { count: vars.length });
       }
 
       function updateResult(vars) {
@@ -130,14 +130,12 @@ const uploadArea = document.getElementById('uploadArea');
       extractBtn.addEventListener('click', () => {
         const css = cssInput.value;
         if (!css.trim()) {
-          showError('لطفاً کد CSS را وارد کنید یا فایل آپلود کنید');
+          showError(getTranslation('cssVarEnterCss'));
           return;
         }
         const vars = extractVariables(css);
         if (!vars.length) {
-          showError(
-            'هیچ متغیر CSS معتبری یافت نشد. لطفاً الگوی `--name: value;` را بررسی کنید.',
-          );
+          showError(getTranslation('cssVarNoValidVars'));
         }
         updateResult(vars);
       });
@@ -147,7 +145,7 @@ const uploadArea = document.getElementById('uploadArea');
           !file ||
           !(file.name.endsWith('.css') || file.type === 'text/css')
         ) {
-          showError('لطفاً یک فایل CSS معتبر انتخاب کنید');
+          showError(getTranslation('cssVarSelectCssFile'));
           return;
         }
         const reader = new FileReader();
@@ -155,7 +153,7 @@ const uploadArea = document.getElementById('uploadArea');
           cssInput.value = e.target.result;
           extractBtn.click();
         };
-        reader.onerror = () => showError('خطا در خواندن فایل');
+        reader.onerror = () => showError(getTranslation('fileReadError'));
         reader.readAsText(file);
       }
 
@@ -187,11 +185,11 @@ const uploadArea = document.getElementById('uploadArea');
         navigator.clipboard
           .writeText(css)
           .then(() => {
-            const old = copyCssBtn.textContent;
-            copyCssBtn.textContent = '✅ کپی شد!';
+            const old = getTranslation('cssVarCopyCssBtn');
+            copyCssBtn.textContent = getTranslation('copySuccess');
             setTimeout(() => (copyCssBtn.textContent = old), 1500);
           })
-          .catch(() => showError('خطا در کپی'));
+          .catch(() => showError(getTranslation('copyError')));
       });
 
       copyJsonBtn.addEventListener('click', () => {
@@ -204,11 +202,11 @@ const uploadArea = document.getElementById('uploadArea');
         navigator.clipboard
           .writeText(json)
           .then(() => {
-            const old = copyJsonBtn.textContent;
-            copyJsonBtn.textContent = '✅ کپی شد!';
+            const old = getTranslation('cssVarCopyJsonBtn');
+            copyJsonBtn.textContent = getTranslation('copySuccess');
             setTimeout(() => (copyJsonBtn.textContent = old), 1500);
           })
-          .catch(() => showError('خطا در کپی'));
+          .catch(() => showError(getTranslation('copyError')));
       });
 
       downloadCssBtn.addEventListener('click', () => {

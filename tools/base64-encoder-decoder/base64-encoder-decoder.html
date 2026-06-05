@@ -28,10 +28,10 @@
       </div>
 
       <div class="tabs">
-        <button class="tab-btn active" data-tab="encode">
+        <button class="tab-btn active" data-tab="encode" data-i18n="base64TabEncode">
           📤 Encode (فایل → Base64)
         </button>
-        <button class="tab-btn" data-tab="decode">
+        <button class="tab-btn" data-tab="decode" data-i18n="base64TabDecode">
           📥 Decode (Base64 → فایل)
         </button>
       </div>
@@ -39,18 +39,18 @@
       <!-- تب Encode -->
       <div id="encodePane" class="tab-pane active">
         <div class="upload-area" id="encodeDropZone">
-          📂 فایل را بکشید یا کلیک کنید (هر نوع فایلی: تصویر، PDF، متن و ...)
+          <span data-i18n="base64EncodeDrop">📂 فایل را بکشید یا کلیک کنید (هر نوع فایلی: تصویر، PDF، متن و ...)</span>
           <input type="file" id="encodeFileInput" style="display: none" />
         </div>
         <div class="result-area" id="encodeResult" style="display: none">
           <div class="result-header">
-            <strong>📋 رشته Base64 (Data URL)</strong>
-            <button id="copyBase64Btn" class="copy-btn">📋 کپی متن</button>
+            <strong data-i18n="base64StringLabel">📋 رشته Base64 (Data URL)</strong>
+            <button id="copyBase64Btn" class="copy-btn" data-i18n="copyTextBtn">📋 کپی متن</button>
           </div>
           <textarea id="base64Output" rows="6" readonly></textarea>
           <div class="result-header" style="margin-top: 1rem">
-            <strong>📁 لینک مستقیم (برای دانلود فایل)</strong>
-            <button id="downloadFromBase64Btn" class="download-btn">
+            <strong data-i18n="base64DirectLinkLabel">📁 لینک مستقیم (برای دانلود فایل)</strong>
+            <button id="downloadFromBase64Btn" class="download-btn" data-i18n="base64DownloadFromBase64">
               💾 دانلود فایل از Base64
             </button>
           </div>
@@ -61,19 +61,20 @@
       <!-- تب Decode -->
       <div id="decodePane" class="tab-pane">
         <div class="form-group">
-          <label>🔣 رشته Base64 (Data URL یا خام)</label>
+          <label data-i18n="base64InputLabel">🔣 رشته Base64 (Data URL یا خام)</label>
           <textarea
             id="base64Input"
+            data-i18n-placeholder="base64InputPlaceholder"
             placeholder="پaste کردن رشته Base64... (مثل data:image/png;base64,... یا فقط قسمت base64)"
           ></textarea>
-          <button id="decodeBtn" style="margin-top: 8px">
+          <button id="decodeBtn" style="margin-top: 8px" data-i18n="base64DecodeBtn">
             🔄 تبدیل به فایل
           </button>
         </div>
         <div class="result-area" id="decodeResult" style="display: none">
           <div class="result-header">
-            <strong>📄 فایل بازیابی شده</strong>
-            <button id="downloadDecodedBtn" class="download-btn">
+            <strong data-i18n="base64DecodedFileLabel">📄 فایل بازیابی شده</strong>
+            <button id="downloadDecodedBtn" class="download-btn" data-i18n="downloadFileBtn">
               💾 دانلود فایل
             </button>
           </div>
@@ -83,14 +84,13 @@
       </div>
 
       <footer>
-        🔒 تمام عملیات در مرورگر شما انجام می‌شود — فایل‌ها به سرور ارسال
-        نمی‌شوند.<br />
-        💡 Base64 خروجی به صورت Data URL (شامل نوع MIME) است. در حالت Decode، هر
-        دو نوع Data URL و رشته خام پشتیبانی می‌شوند.
+        <span data-i18n="privacyFooterNoUpload">🔒 تمام عملیات در مرورگر شما انجام می‌شود — فایل‌ها به سرور ارسال نمی‌شوند.</span><br />
+        <span data-i18n="base64FooterTip">💡 Base64 خروجی به صورت Data URL (شامل نوع MIME) است. در حالت Decode، هر دو نوع Data URL و رشته خام پشتیبانی می‌شوند.</span>
       </footer>
     </div>
 
-    <script src="base64-encoder-decoder.js"></script>
+    <script src="../../translations.js"></script>
     <script src="../../script.js"></script>
+    <script src="base64-encoder-decoder.js"></script>
 </body>
 </html>

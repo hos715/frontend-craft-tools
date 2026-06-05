@@ -27,7 +27,7 @@
       </div>
 
       <div class="upload-area" id="dropZone">
-        📂 تصویر را بکشید یا کلیک کنید (PNG, JPG, WebP, ...)
+        <span data-i18n="colorPaletteUpload">📂 تصویر را بکشید یا کلیک کنید (PNG, JPG, WebP, ...)</span>
         <input
           type="file"
           id="fileInput"
@@ -39,12 +39,12 @@
 
       <div class="controls">
         <div class="left-controls">
-          <label
-            >🎨 تعداد رنگ‌ها:
+          <label>
+            <span data-i18n="colorPaletteCountLabel">🎨 تعداد رنگ‌ها:</span>
             <input type="range" id="colorCount" min="2" max="10" value="6" />
-            <span id="countValue">6</span></label
-          >
-          <button id="extractBtn">✨ استخراج پالت</button>
+            <span id="countValue">6</span>
+          </label>
+          <button id="extractBtn" data-i18n="colorPaletteExtractBtn">✨ استخراج پالت</button>
         </div>
         <div class="format-switch" id="formatSwitch">
           <button data-format="hex" class="active">Hex</button>
@@ -56,12 +56,13 @@
       <div id="paletteContainer" class="palette"></div>
 
       <div class="css-output" id="cssOutput" style="display: none">
-        <h3>📋 CSS Variables آماده (کپی کنید)</h3>
+        <h3 data-i18n="colorPaletteCssTitle">📋 CSS Variables آماده (کپی کنید)</h3>
         <div style="position: relative">
           <pre id="cssVars" dir="ltr"></pre>
           <button
             id="copyCssBtn"
             class="copy-btn"
+            data-i18n="copyBtn"
             style="position: absolute; top: 8px; left: 8px"
           >
             📋 کپی
@@ -70,10 +71,11 @@
       </div>
 
       <div id="statusMsg" class="status"></div>
-      <footer>🔒 تمام عملیات در مرورگر شما انجام می‌شود.</footer>
+      <footer data-i18n="privacyFooter">🔒 تمام عملیات در مرورگر شما انجام می‌شود.</footer>
     </div>
 
-    <script src="color-palette-extractor.js"></script>
+    <script src="../../translations.js"></script>
     <script src="../../script.js"></script>
+    <script src="color-palette-extractor.js"></script>
 </body>
 </html>

@@ -34,17 +34,17 @@ const dropZone = document.getElementById('dropZone');
           });
           animationItem.setSpeed(parseFloat(speedSlider.value));
           animationContainer.style.display = 'block';
-          showMessage('✅ انیمیشن با موفقیت بارگذاری شد');
+          showMessage(getTranslation('lottiePreviewLoaded'));
         } catch (err) {
           console.error(err);
-          showMessage('خطا در بارگذاری فایل لاتی: فرمت JSON معتبر نیست', true);
+          showMessage(getTranslation('lottiePreviewLoadError'), true);
           animationContainer.style.display = 'none';
         }
       }
 
       function handleFile(file) {
         if (!file || !file.name.endsWith('.json')) {
-          showMessage('لطفاً یک فایل JSON معتبر (لاتی) انتخاب کنید', true);
+          showMessage(getTranslation('lottiePreviewSelectJson'), true);
           return;
         }
         const reader = new FileReader();
@@ -53,11 +53,11 @@ const dropZone = document.getElementById('dropZone');
             const json = JSON.parse(e.target.result);
             loadAnimation(json);
           } catch (err) {
-            showMessage('فایل JSON معتبر نیست', true);
+            showMessage(getTranslation('lottiePreviewInvalidJson'), true);
             animationContainer.style.display = 'none';
           }
         };
-        reader.onerror = () => showMessage('خطا در خواندن فایل', true);
+        reader.onerror = () => showMessage(getTranslation('fileReadError'), true);
         reader.readAsText(file);
       }
 
@@ -81,16 +81,16 @@ const dropZone = document.getElementById('dropZone');
 
       playBtn.addEventListener('click', () => {
         if (animationItem) animationItem.play();
-        else showMessage('هیچ انیمیشنی بارگذاری نشده', true);
+        else showMessage(getTranslation('lottiePreviewNoAnimation'), true);
       });
       pauseBtn.addEventListener('click', () => {
         if (animationItem) animationItem.pause();
-        else showMessage('هیچ انیمیشنی بارگذاری نشده', true);
+        else showMessage(getTranslation('lottiePreviewNoAnimation'), true);
       });
       stopBtn.addEventListener('click', () => {
         if (animationItem) {
           animationItem.stop();
-        } else showMessage('هیچ انیمیشنی بارگذاری نشده', true);
+        } else showMessage(getTranslation('lottiePreviewNoAnimation'), true);
       });
       speedSlider.addEventListener('input', () => {
         const val = parseFloat(speedSlider.value);

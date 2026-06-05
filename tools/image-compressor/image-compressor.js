@@ -37,19 +37,20 @@ const dropZone = document.getElementById('dropZone');
 
       function handleFile(file) {
         if (!file.type.startsWith('image/')) {
-          showMessage('فایل انتخاب شده تصویر نیست', true);
+          showMessage(getTranslation('notImageFile'), true);
           return;
         }
         originalFile = file;
         const reader = new FileReader();
         reader.onload = (e) => {
           originalImg.src = e.target.result;
-          originalSizeSpan.innerHTML = `📦 حجم: ${(file.size / 1024).toFixed(2)} KB`;
+          originalSizeSpan.innerHTML = getTranslation('imageCompressorSizeInfo', {
+            size: (file.size / 1024).toFixed(2),
+          });
           previewArea.style.display = 'block';
-          showMessage(
-            'تصویر بارگذاری شد. حالا می‌توانید فشرده‌سازی را شروع کنید.',
-          );
+          showMessage(getTranslation('imageCompressorLoaded'));
         };
+        reader.onerror = () => showMessage(getTranslation('imageLoadError'), true);
         reader.readAsDataURL(file);
       }
 
@@ -73,17 +74,16 @@ const dropZone = document.getElementById('dropZone');
 
       async function compressImage() {
         if (!originalFile) {
-          showMessage('لطفاً ابتدا یک تصویر انتخاب کنید', true);
+          showMessage(getTranslation('selectImageFirst'), true);
           return;
         }
         const quality = parseInt(qualityRange.value) / 100;
         const format = outputFormat.value;
 
-        // ایجاد Image از فایل اصلی
         const img = await new Promise((resolve, reject) => {
           const imgEl = new Image();
           imgEl.onload = () => resolve(imgEl);
-          imgEl.onerror = reject;
+          imgEl.onerror = () => reject(new Error(getTranslation('imageLoadError')));
           imgEl.src = URL.createObjectURL(originalFile);
         });
 
@@ -93,7 +93,6 @@ const dropZone = document.getElementById('dropZone');
         const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0);
 
-        // تبدیل به Blob با کیفیت و فرمت مورد نظر
         const blob = await new Promise((resolve) => {
           canvas.toBlob(resolve, format, quality);
         });
@@ -101,22 +100,25 @@ const dropZone = document.getElementById('dropZone');
         URL.revokeObjectURL(img.src);
 
         if (!blob) {
-          showMessage('خطا در فشرده‌سازی تصویر', true);
+          showMessage(getTranslation('imageCompressorError'), true);
           return;
         }
 
         compressedBlob = blob;
         const compressedUrl = URL.createObjectURL(blob);
         compressedImg.src = compressedUrl;
-        compressedSizeSpan.innerHTML = `📦 حجم: ${(blob.size / 1024).toFixed(2)} KB<br>📉 کاهش: ${((1 - blob.size / originalFile.size) * 100).toFixed(1)}%`;
-        showMessage('فشرده‌سازی با موفقیت انجام شد');
+        compressedSizeSpan.innerHTML = getTranslation('imageCompressorReduced', {
+          size: (blob.size / 1024).toFixed(2),
+          percent: ((1 - blob.size / originalFile.size) * 100).toFixed(1),
+        });
+        showMessage(getTranslation('imageCompressorSuccess'));
       }
 
       compressBtn.addEventListener('click', compressImage);
 
       downloadBtn.addEventListener('click', () => {
         if (!compressedBlob) {
-          showMessage('ابتدا تصویر را فشرده کنید', true);
+          showMessage(getTranslation('imageCompressorCompressFirst'), true);
           return;
         }
         const link = document.createElement('a');

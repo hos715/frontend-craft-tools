@@ -24,7 +24,7 @@
       // آپلود فایل
       function handleFile(file) {
         if (!file || !file.name.endsWith('.svg')) {
-          alert('لطفاً یک فایل SVG معتبر انتخاب کنید.');
+          alert(getTranslation('svgSelectValid'));
           return;
         }
         originalFileName = file.name.replace(/\.svg$/i, ''); // حذف پسوند .svg
@@ -66,7 +66,7 @@
       function optimizeSVG() {
         let svg = inputSvg.value;
         if (!svg.trim()) {
-          outputPre.textContent = 'هیچ کد SVG وارد نشده است.';
+          outputPre.textContent = getTranslation('svgNoInput');
           statsDiv.innerHTML = '';
           currentOptimized = '';
           return;
@@ -123,9 +123,9 @@
         const newSize = svg.length;
         const percent = ((1 - newSize / originalSize) * 100).toFixed(1);
         statsDiv.innerHTML = `
-            <span class="stat-badge">📦 حجم قبل: ${(originalSize / 1024).toFixed(2)} KB</span>
-            <span class="stat-badge">✨ حجم بعد: ${(newSize / 1024).toFixed(2)} KB</span>
-            <span class="stat-badge">📉 کاهش: ${percent}%</span>
+            <span class="stat-badge">${getTranslation('svgSizeBefore', { size: (originalSize / 1024).toFixed(2) })}</span>
+            <span class="stat-badge">${getTranslation('svgSizeAfter', { size: (newSize / 1024).toFixed(2) })}</span>
+            <span class="stat-badge">${getTranslation('svgSizeReduced', { percent })}</span>
         `;
         outputPre.textContent = svg;
         currentOptimized = svg;
@@ -134,21 +134,22 @@
       optimizeBtn.addEventListener('click', optimizeSVG);
       copyOutputBtn.addEventListener('click', () => {
         if (!currentOptimized) {
-          alert('ابتدا یک SVG را بهینه‌سازی کنید.');
+          alert(getTranslation('svgOptimizeFirst'));
           return;
         }
         navigator.clipboard
           .writeText(currentOptimized)
           .then(() => {
-            const oldText = copyOutputBtn.textContent;
-            copyOutputBtn.textContent = '✅ کپی شد!';
-            setTimeout(() => (copyOutputBtn.textContent = oldText), 1500);
+            copyOutputBtn.textContent = getTranslation('copySuccess');
+            setTimeout(() => {
+              copyOutputBtn.textContent = getTranslation('svgCopyOutputBtn');
+            }, 1500);
           })
-          .catch(() => alert('خطا در کپی'));
+          .catch(() => alert(getTranslation('copyError')));
       });
       downloadBtn.addEventListener('click', () => {
         if (!currentOptimized) {
-          alert('ابتدا یک SVG را بهینه‌سازی کنید.');
+          alert(getTranslation('svgOptimizeFirst'));
           return;
         }
         let downloadName = 'optimized.svg';

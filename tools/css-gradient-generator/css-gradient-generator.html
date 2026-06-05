@@ -34,21 +34,21 @@
               <pre id="cssCode">
 background: linear-gradient(135deg, #9d6cab, #3f5dad);</pre
               >
-              <button class="copy-btn" id="copyBtn">📋 کپی CSS</button>
+              <button class="copy-btn" id="copyBtn" data-i18n="copyCssBtn">📋 کپی CSS</button>
             </div>
           </div>
 
           <div class="control-group">
-            <label>📐 نوع گرادیان</label>
+            <label data-i18n="cssGradientTypeLabel">📐 نوع گرادیان</label>
             <select id="gradientType">
-              <option value="linear">Linear (خطی)</option>
-              <option value="radial">Radial (شعاعی)</option>
-              <option value="conic">Conic (مخروطی)</option>
+              <option value="linear" data-i18n="cssGradientLinear">Linear (خطی)</option>
+              <option value="radial" data-i18n="cssGradientRadial">Radial (شعاعی)</option>
+              <option value="conic" data-i18n="cssGradientConic">Conic (مخروطی)</option>
             </select>
           </div>
 
           <div class="control-group" id="angleGroup">
-            <label>🧭 زاویه / موقعیت</label>
+            <label data-i18n="cssGradientAngleLabel">🧭 زاویه / موقعیت</label>
             <div class="angle-group">
               <input
                 type="range"
@@ -70,13 +70,13 @@ background: linear-gradient(135deg, #9d6cab, #3f5dad);</pre
           </div>
 
           <div class="control-group">
-            <label>🎨 رنگ‌ها (حداقل ۲، حداکثر ۶)</label>
+            <label data-i18n="cssGradientColorsLabel">🎨 رنگ‌ها (حداقل ۲، حداکثر ۶)</label>
             <div id="colorsContainer"></div>
-            <button id="addColorBtn" class="add-color-btn">
+            <button id="addColorBtn" class="add-color-btn" data-i18n="cssGradientAddColor">
               + افزودن رنگ جدید
             </button>
             <div class="saved-list" id="savedGradients">
-              <div style="font-size: 0.7rem; color: #aaa">
+              <div class="saved-gradients-hint" style="font-size: 0.7rem; color: #aaa" data-i18n="cssGradientSavedHint">
                 ⭐ گرادیان‌های ذخیره شده (کلیک کنید)
               </div>
             </div>
@@ -85,16 +85,18 @@ background: linear-gradient(135deg, #9d6cab, #3f5dad);</pre
 
         <div class="col">
           <div class="control-group">
-            <label>💾 ذخیره گرادیان فعلی</label>
+            <label data-i18n="cssGradientSaveLabel">💾 ذخیره گرادیان فعلی</label>
             <input
               type="text"
               id="saveName"
+              data-i18n-placeholder="cssGradientSavePlaceholder"
               placeholder="نام (مثلاً: گرادیان بنفش)"
             />
             <button
               id="saveGradientBtn"
               class="add-color-btn"
               style="margin-top: 8px"
+              data-i18n="cssGradientSaveBtn"
             >
               💾 ذخیره در مرورگر
             </button>
@@ -102,12 +104,13 @@ background: linear-gradient(135deg, #9d6cab, #3f5dad);</pre
               id="clearSavedBtn"
               class="add-color-btn"
               style="background: #5e2a2a; margin-top: 5px"
+              data-i18n="cssGradientClearBtn"
             >
               🗑️ پاک کردن همه
             </button>
           </div>
           <div class="control-group">
-            <label>📋 خروجی CSS آماده</label>
+            <label data-i18n="cssGradientOutputLabel">📋 خروجی CSS آماده</label>
             <pre
               id="fullCssPreview"
               style="font-size: 0.7rem; height: 150px; overflow: auto"
@@ -115,13 +118,14 @@ background: linear-gradient(135deg, #9d6cab, #3f5dad);</pre
           </div>
         </div>
       </div>
-      <footer>
+      <footer data-i18n="cssGradientFooter">
         🔒 همه عملیات در مرورگر شما انجام می‌شود — گرادیان‌های ذخیره شده در
         localStorage نگهداری می‌شوند.
       </footer>
     </div>
 
-    <script src="css-gradient-generator.js"></script>
+    <script src="../../translations.js"></script>
     <script src="../../script.js"></script>
+    <script src="css-gradient-generator.js"></script>
 </body>
 </html>

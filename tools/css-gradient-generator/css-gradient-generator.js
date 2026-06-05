@@ -80,7 +80,7 @@
               renderColors();
               updateGradient();
             } else {
-              alert('حداقل دو رنگ نیاز است.');
+              alert(getTranslation('cssGradientMinColors'));
             }
           });
           row.appendChild(colorPicker);
@@ -94,7 +94,7 @@
       // افزودن رنگ جدید
       addColorBtn.addEventListener('click', () => {
         if (colors.length >= 6) {
-          alert('حداکثر ۶ رنگ مجاز است.');
+          alert(getTranslation('cssGradientMaxColors'));
           return;
         }
         colors.push('#ffffff');
@@ -131,7 +131,7 @@
       // ذخیره در localStorage
       function saveCurrentGradient() {
         let name = saveNameInput.value.trim();
-        if (!name) name = `گرادیان ${new Date().toLocaleTimeString()}`;
+        if (!name) name = getTranslation('cssGradientDefaultName', { time: new Date().toLocaleTimeString() });
         const type = gradientType.value;
         const angle = angleRange.value;
         const savedColors = [...colors];
@@ -157,7 +157,7 @@
           localStorage.getItem('css_gradients') || '[]',
         );
         savedGradientsDiv.innerHTML =
-          '<div style="font-size:0.7rem; color:#aaa;">⭐ گرادیان‌های ذخیره شده (کلیک کنید)</div>';
+          `<div class="saved-gradients-hint" style="font-size:0.7rem; color:#aaa;">${getTranslation('cssGradientSavedHint')}</div>`;
         gradients.forEach((item, idx) => {
           const div = document.createElement('div');
           div.className = 'saved-item';
@@ -181,7 +181,7 @@
       }
 
       clearSavedBtn.addEventListener('click', () => {
-        if (confirm('همه گرادیان‌های ذخیره شده حذف می‌شوند. ادامه؟')) {
+        if (confirm(getTranslation('cssGradientClearConfirm'))) {
           localStorage.removeItem('css_gradients');
           loadSavedList();
         }
@@ -195,11 +195,11 @@
         navigator.clipboard
           .writeText(cssText)
           .then(() => {
-            const original = copyBtn.textContent;
-            copyBtn.textContent = '✅ کپی شد!';
+            const original = getTranslation('copyCssBtn');
+            copyBtn.textContent = getTranslation('copySuccess');
             setTimeout(() => (copyBtn.textContent = original), 1500);
           })
-          .catch(() => alert('خطا در کپی'));
+          .catch(() => alert(getTranslation('copyError')));
       });
 
       // مقداردهی اولیه
@@ -211,4 +211,9 @@
         updateGradient();
         loadSavedList();
       }
+      window.addEventListener('languageChanged', () => {
+        const hint = savedGradientsDiv.querySelector('.saved-gradients-hint');
+        if (hint) hint.textContent = getTranslation('cssGradientSavedHint');
+      });
+
       init();

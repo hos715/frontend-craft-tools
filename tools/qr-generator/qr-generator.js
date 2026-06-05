@@ -19,7 +19,7 @@ const qrText = document.getElementById('qrText');
       function generateQR() {
         let text = qrText.value.trim();
         if (!text) {
-          showMessage('لطفاً متن یا آدرس را وارد کنید', true);
+          showMessage(getTranslation('qrEnterText'), true);
           return;
         }
         const correctionLevel = qrCorrection.value; // L, M, Q, H
@@ -30,10 +30,7 @@ const qrText = document.getElementById('qrText');
           qr.addData(text);
           qr.make();
         } catch (e) {
-          showMessage(
-            'متن وارد شده برای این سطح تصحیح خیلی طولانی است. سطح را کاهش دهید یا متن را کوتاه کنید.',
-            true,
-          );
+          showMessage(getTranslation('qrTextTooLong'), true);
           return;
         }
         const cellSize = qrSize.value / qr.getModuleCount();
@@ -58,19 +55,19 @@ const qrText = document.getElementById('qrText');
         }
 
         previewArea.style.display = 'block';
-        showMessage('✅ QR Code با موفقیت تولید شد');
+        showMessage(getTranslation('qrSuccess'));
       }
 
       function downloadQR() {
         if (!qrCanvas.width) {
-          showMessage('ابتدا QR Code را تولید کنید', true);
+          showMessage(getTranslation('qrGenerateFirst'), true);
           return;
         }
         const link = document.createElement('a');
         link.download = 'qrcode.png';
         link.href = qrCanvas.toDataURL('image/png');
         link.click();
-        showMessage('📁 تصویر دانلود شد');
+        showMessage(getTranslation('qrDownloaded'));
       }
 
       qrSize.addEventListener('input', () => {

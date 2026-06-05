@@ -29,8 +29,8 @@
           shadowDiv.className = 'shadow-item';
           shadowDiv.innerHTML = `
                 <div class="shadow-header">
-                    <strong>سایه ${index + 1}</strong>
-                    <button class="remove-shadow" data-index="${index}">🗑️ حذف</button>
+                    <strong>${getTranslation('shadowTitle', { n: index + 1 })}</strong>
+                    <button class="remove-shadow" data-index="${index}">${getTranslation('removeBtn')}</button>
                 </div>
                 <div style="display:flex; flex-wrap:wrap; gap:10px;">
                     <div style="flex:1">
@@ -66,11 +66,11 @@
                 </div>
                 <div class="color-row" style="margin-top:8px;">
                     <div style="flex:1">
-                        <label>رنگ</label>
+                        <label>${getTranslation('colorLabel')}</label>
                         <input type="color" class="shadow-color" data-index="${index}" value="${shadow.color}">
                     </div>
                     <div style="flex:1">
-                        <label>شفافیت</label>
+                        <label>${getTranslation('opacityLabel')}</label>
                         <div class="slider-row">
                             <input type="range" class="shadow-opacity" data-index="${index}" min="0" max="100" value="${shadow.opacity * 100}" step="1">
                             <input type="number" class="shadow-opacity-num" data-index="${index}" value="${shadow.opacity * 100}" step="1" style="width:60px;">
@@ -80,7 +80,7 @@
                 <div style="margin-top:8px;">
                     <label style="display:flex; align-items:center; gap:8px;">
                         <input type="checkbox" class="shadow-inset" data-index="${index}" ${shadow.inset ? 'checked' : ''}>
-                        inset (سایه داخلی)
+                        ${getTranslation('insetShadowLabel')}
                     </label>
                 </div>
             `;
@@ -300,12 +300,16 @@
         navigator.clipboard
           .writeText(text)
           .then(() => {
-            const original = copyBtn.textContent;
-            copyBtn.textContent = '✅ کپی شد!';
-            setTimeout(() => (copyBtn.textContent = original), 1500);
+            copyBtn.textContent = getTranslation('copySuccess');
+            setTimeout(
+              () => (copyBtn.textContent = getTranslation('copyCssBtn')),
+              1500,
+            );
           })
-          .catch(() => alert('خطا در کپی'));
+          .catch(() => alert(getTranslation('copyError')));
       });
+
+      window.addEventListener('languageChanged', renderShadows);
 
       // مقداردهی اولیه با یک سایه پیش‌فرض
       shadows.push(createShadowObject());
