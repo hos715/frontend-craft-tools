@@ -1,0 +1,37 @@
+name: Good first issue idea
+description: Propose a small task for new contributors
+title: "[Good first issue]: "
+labels: ["good first issue"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Small, well-scoped tasks help new contributors get started.
+        Maintainers can refine the description and assign the issue.
+
+  - type: textarea
+    id: task
+    attributes:
+      label: Task description
+      description: What should a new contributor do? Keep it small and clear.
+      placeholder: e.g. Add Hindi translation for the QR Generator docs
+    validations:
+      required: true
+
+  - type: textarea
+    id: hints
+    attributes:
+      label: Hints / files to touch
+      placeholder: e.g. docs/hi/tools/qr-generator.md, script.js
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Estimated scope
+      options:
+        - label: Can be done in under 1 hour
+          required: false
+        - label: No new dependencies needed
+          required: false

@@ -2,17 +2,15 @@ name: CI
 
 on:
   push:
-    branches: [ main, ci-badge ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run basic validation
-        run: |
-          echo "Frontend Craft Tools CI workflow"
-          echo "Repository: $GITHUB_REPOSITORY"
-          echo "Branch: $GITHUB_REF"
+
+      - name: Validate project structure
+        run: bash scripts/validate.sh
